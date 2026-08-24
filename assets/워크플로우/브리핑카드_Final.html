@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OLA · Visual Studio Code - 브리핑 카드 소스 보기</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons & Fonts -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
+    @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+    :root {
+      /* VS Code Dark+ Theme Palette */
+      --vscode-titlebar: #323233;
+      --vscode-activitybar: #333333;
+      --vscode-activitybar-active: #ffffff;
+      --vscode-sidebar: #252526;
+      --vscode-sidebar-header: #2d2d2d;
+      --vscode-editor-bg: #1e1e1e;
+      --vscode-tab-active-bg: #1e1e1e;
+      --vscode-tab-inactive-bg: #2d2d2d;
+      --vscode-tab-border: #252526;
+      --vscode-statusbar: #181818;
+      --vscode-border: #3c3c3c;
+      --vscode-hover: #2a2d2e;
+      --vscode-active-item: #094771;
+      --vscode-gutter-num: #858585;
+      
+      /* VS Code Dark+ Syntax Colors */
+      --syn-comment: #6A9955;
+      --syn-keyword: #569CD6;
+      --syn-control: #C586C0;
+      --syn-string: #CE9178;
+      --syn-number: #B5CEA8;
+      --syn-tag: #569CD6;
+      --syn-attr: #9CDCFE;
+      --syn-property: #9CDCFE;
+      --syn-value: #CE9178;
+      --syn-function: #DCDCAA;
+      --syn-variable: #9CDCFE;
+      --syn-selector: #D7BA7D;
+
+      --font-ui: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-code: "Fira Code", "JetBrains Mono", Consolas, "Courier New", monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: var(--vscode-editor-bg);
+      font-family: var(--font-ui);
+      color: #cccccc;
+      user-select: none;
+    }
+
+    /* VS Code App Window */
+    .vscode-window {
+      width: 100%;
+      height: 100%;
+      background: var(--vscode-editor-bg);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* 1. Title Bar */
+    .titlebar {
+      height: 35px;
+      background: var(--vscode-titlebar);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
+      border-bottom: 1px solid rgba(0,0,0,0.2);
+      font-size: 12px;
+    }
+
+    .titlebar-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .titlebar-menu {
+      display: flex;
+      gap: 12px;
+      color: #cccccc;
+      font-size: 12px;
+    }
+
+    .titlebar-menu span:hover {
+      color: #ffffff;
+      cursor: pointer;
+    }
+
+    .titlebar-center {
+      color: #9d9d9d;
+      font-size: 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 400px;
+    }
+
+    .titlebar-controls {
+      display: flex;
+      gap: 8px;
+    }
+
+    .titlebar-btn {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    /* 2. Main Work Area */
+    .workbench {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    /* Activity Bar (Far Left) */
+    .activity-bar {
+      width: 48px;
+      background: var(--vscode-activitybar);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-right: 1px solid rgba(0,0,0,0.15);
+    }
+
+    .activity-icons-top, .activity-icons-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .act-icon {
+      color: #858585;
+      cursor: pointer;
+      position: relative;
+      padding: 6px;
+      border-radius: 4px;
+      transition: color 0.15s;
+    }
+
+    .act-icon:hover { color: #ffffff; }
+    .act-icon.active {
+      color: var(--vscode-activitybar-active);
+    }
+    .act-icon.active::before {
+      content: '';
+      position: absolute;
+      left: -8px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #ffffff;
+    }
+
+    /* Side Bar (Explorer) */
+    .sidebar {
+      width: 220px;
+      background: var(--vscode-sidebar);
+      border-right: 1px solid var(--vscode-border);
+      display: flex;
+      flex-direction: column;
+      font-size: 12px;
+    }
+
+    .sidebar-header {
+      padding: 10px 16px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: #bbbbbb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-transform: uppercase;
+      font-size: 11px;
+    }
+
+    .tree-section-header {
+      padding: 4px 8px;
+      background: rgba(255, 255, 255, 0.03);
+      font-weight: 700;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: #cccccc;
+      cursor: pointer;
+    }
+
+    .file-tree {
+      display: flex;
+      flex-direction: column;
+      padding: 4px 0;
+    }
+
+    .tree-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 16px 5px 24px;
+      cursor: pointer;
+      color: #cccccc;
+      transition: background 0.1s;
+    }
+
+    .tree-item:hover {
+      background: var(--vscode-hover);
+    }
+
+    .tree-item.active {
+      background: var(--vscode-active-item);
+      color: #ffffff;
+    }
+
+    .tree-item.indent-1 { padding-left: 36px; }
+
+    /* Editor Area */
+    .editor-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: var(--vscode-editor-bg);
+      overflow: hidden;
+    }
+
+    /* Tabs Bar */
+    .tabs-bar {
+      display: flex;
+      background: #252526;
+      overflow-x: auto;
+      scrollbar-width: none;
+      border-bottom: 1px solid rgba(0,0,0,0.3);
+    }
+
+    .tab {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: var(--vscode-tab-inactive-bg);
+      color: #969696;
+      font-size: 13px;
+      border-right: 1px solid #252526;
+      cursor: pointer;
+      white-space: nowrap;
+      min-width: 130px;
+    }
+
+    .tab:hover { color: #cccccc; }
+    .tab.active {
+      background: var(--vscode-tab-active-bg);
+      color: #ffffff;
+      border-top: 1px solid var(--vscode-statusbar);
+    }
+
+    .tab-close {
+      margin-left: auto;
+      opacity: 0;
+      border-radius: 3px;
+      padding: 2px;
+    }
+
+    .tab:hover .tab-close { opacity: 0.7; }
+    .tab-close:hover { opacity: 1; background: rgba(255,255,255,0.1); }
+
+    /* Breadcrumbs */
+    .breadcrumbs {
+      height: 24px;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: #888888;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      background: var(--vscode-editor-bg);
+    }
+
+    /* Main Code View Area */
+    .editor-view {
+      flex: 1;
+      display: flex;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .code-viewport {
+      flex: 1;
+      display: flex;
+      overflow: auto;
+      font-family: var(--font-code);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .gutter {
+      padding: 12px 12px 12px 16px;
+      text-align: right;
+      color: var(--vscode-gutter-num);
+      user-select: none;
+      border-right: 1px solid rgba(255, 255, 255, 0.03);
+      background: var(--vscode-editor-bg);
+      min-width: 50px;
+    }
+
+    .code-content {
+      padding: 12px 20px;
+      color: #d4d4d4;
+      white-space: pre;
+      tab-size: 4;
+      user-select: text;
+    }
+
+    /* VS Code Code Minimap Preview Effect */
+    .minimap {
+      width: 60px;
+      background: rgba(0, 0, 0, 0.1);
+      border-left: 1px solid rgba(255, 255, 255, 0.02);
+      padding: 8px 4px;
+      opacity: 0.4;
+      user-select: none;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .minimap-line {
+      height: 2px;
+      margin-bottom: 2px;
+      border-radius: 1px;
+      background: #4e4e4e;
+    }
+
+    /* File Explanations Panel at bottom of Editor */
+    .editor-info-banner {
+      background: #252526;
+      border-top: 1px solid var(--vscode-border);
+      padding: 10px 16px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #cccccc;
+    }
+
+    /* Syntax Highlighting Styles (VS Code Dark+) */
+    .tok-comment { color: var(--syn-comment); font-style: italic; }
+    .tok-keyword { color: var(--syn-control); font-weight: 500; }
+    .tok-tag { color: var(--syn-tag); }
+    .tok-attr { color: var(--syn-attr); }
+    .tok-string { color: var(--syn-string); }
+    .tok-number { color: var(--syn-number); }
+    .tok-function { color: var(--syn-function); }
+    .tok-property { color: var(--syn-property); }
+    .tok-selector { color: var(--syn-selector); }
+    .tok-type { color: #4EC9B0; }
+
+    /* 3. Status Bar */
+    .statusbar {
+      height: 24px;
+      background: var(--vscode-statusbar);
+      border-top: 1px solid var(--vscode-border);
+      color: #9d9d9d;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
+      font-size: 11px;
+    }
+
+    .statusbar-left, .statusbar-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .statusbar-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .statusbar-item:hover { opacity: 0.8; }
+
+    /* Copy Action Float Button inside Editor */
+    .action-bar {
+      position: absolute;
+      top: 12px;
+      right: 80px;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+    }
+
+    .vscode-btn {
+      background: #0e639c;
+      color: white;
+      border: none;
+      padding: 4px 10px;
+      border-radius: 2px;
+      font-size: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s;
+    }
+
+    .vscode-btn:hover { background: #1177bb; }
+
+    /* Toast Notification (VS Code Style Popup) */
+    .vscode-toast {
+      position: fixed;
+      bottom: 35px;
+      right: 20px;
+      background: #252526;
+      color: #cccccc;
+      border: 1px solid var(--vscode-border);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      border-radius: 4px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      z-index: 100;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .vscode-toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Scrollbars */
+    ::-webkit-scrollbar { width: 10px; height: 10px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(121, 121, 121, 0.4); }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(100, 100, 100, 0.7); }
+  </style>
+</head>
+<body>
+
+  <div class="vscode-window">
+    
+    <!-- 1. Titlebar -->
+    <div class="titlebar">
+      <div class="titlebar-left">
+        <svg class="w-4 h-4 text-blue-400" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M23.15 2.587l-16.6 11.5L.95 9.187a.75.75 0 00-1.12.65v8.326a.75.75 0 00.37.65l5.6 3.25 16.6-11.5a.75.75 0 00.35-.65V3.237a.75.75 0 00-1.6-.65z"/>
+        </svg>
+        <div class="titlebar-menu hidden md:flex">
+          <span>File</span>
+          <span>Edit</span>
+          <span>Selection</span>
+          <span>View</span>
+          <span>Go</span>
+          <span>Run</span>
+          <span>Terminal</span>
+          <span>Help</span>
+        </div>
+      </div>
+      <div class="titlebar-center" id="titlebar-filename">
+        index.html — ola-briefing-card - Visual Studio Code
+      </div>
+      <div class="titlebar-controls">
+        <span class="titlebar-btn bg-yellow-500/80"></span>
+        <span class="titlebar-btn bg-green-500/80"></span>
+        <span class="titlebar-btn bg-red-500/80"></span>
+      </div>
+    </div>
+
+    <!-- 2. Main Workbench Area -->
+    <div class="workbench">
+      
+      <!-- Activity Bar -->
+      <div class="activity-bar">
+        <div class="activity-icons-top">
+          <div class="act-icon active" id="explorer-toggle-btn" title="Explorer">
+            <i data-lucide="files" class="w-6 h-6"></i>
+          </div>
+          <div class="act-icon" title="Search">
+            <i data-lucide="search" class="w-6 h-6"></i>
+          </div>
+          <div class="act-icon" title="Source Control">
+            <i data-lucide="git-branch" class="w-6 h-6"></i>
+          </div>
+          <div class="act-icon" title="Run and Debug">
+            <i data-lucide="play-circle" class="w-6 h-6"></i>
+          </div>
+          <div class="act-icon" title="Extensions">
+            <i data-lucide="layout-grid" class="w-6 h-6"></i>
+          </div>
+        </div>
+        <div class="activity-icons-bottom">
+          <div class="act-icon" title="Accounts">
+            <i data-lucide="user" class="w-5 h-5"></i>
+          </div>
+          <div class="act-icon" title="Settings">
+            <i data-lucide="settings" class="w-5 h-5"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar / Explorer Panel -->
+      <div class="sidebar hidden sm:flex">
+        <div class="sidebar-header">
+          <span>Explorer</span>
+          <i data-lucide="more-horizontal" class="w-4 h-4 cursor-pointer"></i>
+        </div>
+
+        <div class="tree-section-header">
+          <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+          <span>OLA-BRIEFING-CARD</span>
+        </div>
+
+        <div class="file-tree">
+          <div class="tree-item active" data-target="html">
+            <i data-lucide="file-code-2" class="w-4 h-4 text-orange-400"></i>
+            <span>index.html</span>
+          </div>
+          
+          <div class="tree-item" data-target="css">
+            <i data-lucide="file-badge-2" class="w-4 h-4 text-blue-400"></i>
+            <span>components.css</span>
+          </div>
+
+          <div class="tree-item" data-target="js">
+            <i data-lucide="file-json" class="w-4 h-4 text-yellow-400"></i>
+            <span>briefing-text.js</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Editor Main Container -->
+      <div class="editor-container">
+        
+        <!-- Tabs -->
+        <div class="tabs-bar">
+          <div class="tab active" data-lang="html">
+            <i data-lucide="file-code-2" class="w-4 h-4 text-orange-400"></i>
+            <span>index.html</span>
+            <i data-lucide="x" class="w-3 h-3 tab-close"></i>
+          </div>
+          <div class="tab" data-lang="css">
+            <i data-lucide="file-badge-2" class="w-4 h-4 text-blue-400"></i>
+            <span>components.css</span>
+            <i data-lucide="x" class="w-3 h-3 tab-close"></i>
+          </div>
+          <div class="tab" data-lang="js">
+            <i data-lucide="file-json" class="w-4 h-4 text-yellow-400"></i>
+            <span>briefing-text.js</span>
+            <i data-lucide="x" class="w-3 h-3 tab-close"></i>
+          </div>
+        </div>
+
+        <!-- Breadcrumbs Navigation -->
+        <div class="breadcrumbs">
+          <span>ola-briefing-card</span>
+          <i data-lucide="chevron-right" class="w-3 h-3"></i>
+          <span id="breadcrumb-file">index.html</span>
+          <i data-lucide="chevron-right" class="w-3 h-3"></i>
+          <span id="breadcrumb-context" class="text-gray-400">#ai-briefing-text</span>
+        </div>
+
+        <!-- Code Workspace View -->
+        <div class="editor-view">
+          
+          <!-- Copy Floating Button -->
+          <div class="action-bar">
+            <button type="button" class="vscode-btn" id="copy-btn">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+              <span>코드 복사</span>
+            </button>
+          </div>
+
+          <div class="code-viewport">
+            <div class="gutter" id="line-gutter"></div>
+            <pre class="code-content"><code id="code-display"></code></pre>
+          </div>
+
+          <!-- Decorative VS Code Minimap -->
+          <div class="minimap hidden lg:block" id="minimap-bg">
+            <!-- Simulated minimap lines will be generated via JS -->
+          </div>
+        </div>
+
+        <!-- Editor Bottom File Context Info Banner -->
+        <div class="editor-info-banner">
+          <div class="flex items-center gap-2">
+            <i data-lucide="info" class="w-4 h-4 text-blue-400 flex-shrink-0"></i>
+            <span id="file-description">브리핑 텍스트 영역 마크업 — #ai-briefing-text에 innerHTML로 문장이 채워집니다.</span>
+          </div>
+          <div class="hidden md:flex items-center gap-4 text-xs text-gray-400">
+            <span>UTF-8</span>
+            <span>HTML</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 3. Status Bar -->
+    <div class="statusbar">
+      <div class="statusbar-left">
+        <div class="statusbar-item">
+          <i data-lucide="git-branch" class="w-3.5 h-3.5"></i>
+          <span>main*</span>
+        </div>
+        <div class="statusbar-item">
+          <i data-lucide="x-circle" class="w-3.5 h-3.5"></i>
+          <span>0</span>
+          <i data-lucide="alert-triangle" class="w-3.5 h-3.5 ml-1"></i>
+          <span>0</span>
+        </div>
+      </div>
+      <div class="statusbar-right">
+        <div class="statusbar-item">
+          <span id="status-line-col">Ln 269, Col 1</span>
+        </div>
+        <div class="statusbar-item hidden sm:flex">
+          <span>Spaces: 4</span>
+        </div>
+        <div class="statusbar-item">
+          <span>UTF-8</span>
+        </div>
+        <div class="statusbar-item">
+          <span id="status-lang">HTML</span>
+        </div>
+        <div class="statusbar-item">
+          <i data-lucide="bell" class="w-3.5 h-3.5"></i>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- VS Code Toast Notification -->
+  <div class="vscode-toast" id="vscode-toast">
+    <i data-lucide="check-circle-2" class="w-4 h-4 text-green-400"></i>
+    <span id="toast-msg">클립보드에 코드가 복사되었습니다.</span>
+  </div>
+
+  <!-- Raw Sources Container -->
+  <script type="text/plain" id="src-html">
+                <!-- 오늘의 올라 브리핑 (전체 폭, 이미지 실제 비율에 맞춰 높이 자동 조정 - 내용이 이미지보다 길어도 잘리지 않음) -->
+                <div class="w-full ola-card relative overflow-hidden grid" style="min-height: 450px"
+                    data-ola-drop-zone="true" data-ola-context="home-briefing">
+                    <img src="assets/images/9_2.png" alt=""
+                        class="w-full h-auto self-start [grid-area:1/1] rounded-t-[20px]">
+                    <div class="relative z-10 [grid-area:1/1] p-5 flex flex-col justify-start">
+                        <div class="relative z-10 lg:max-w-[38%]">
+                            <div class="bg-bg rounded-xl p-4 min-h-[280px] flex flex-col">
+                                <div class="flex items-start justify-between gap-2 mb-5">
+                                    <h2 class="text-base font-bold flex items-center gap-2.5 text-dark">
+                                        <button type="button" id="briefing-speak-btn" onclick="olaSpeakBriefing()" title="음성으로 듣기" data-i18n-title="home.briefingVoiceTitle"
+                                            class="w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center flex-shrink-0 hover:bg-emerald-600 hover:scale-110 hover:shadow-md active:scale-95 transition-all cursor-pointer">
+                                            <i data-lucide="megaphone" id="briefing-speak-icon" class="w-4 h-4"></i>
+                                        </button>
+                                        <span data-i18n="home.briefingHeading">오늘의 올라 브리핑</span>
+                                    </h2>
+                                    <span id="briefing-time" class="text-xs text-gray-400 whitespace-nowrap pt-1.5">2026.07.07
+                                        (화) 09:00 기준</span>
+                                </div>
+
+                                <p id="ai-briefing-text" class="text-base text-dark font-medium leading-relaxed break-keep" data-i18n="home.briefingLoadingText">
+                                    오늘의 브리핑을 불러오는 중입니다.
+                                </p>
+                                <div id="ai-briefing-loading" class="flex justify-center mt-4">
+                                    <i data-lucide="loader-circle" class="w-5 h-5 text-primary animate-spin"></i>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div></script>
+
+  <script type="text/plain" id="src-css">/* css/components.css
+   공통 컴포넌트: 카드 · 버튼 · 입력창 · 뱃지
+*/
+
+.ola-card {
+    background: var(--color-white);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--color-border);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.ola-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft-hover);
+}</script>
+
+  <script type="text/plain" id="src-js">/**
+ * js/briefing-text.js — index.html("오늘의 올라 브리핑")과 pages/briefing.html
+ * (AI 행동 가이드 히어로 카드)이 똑같은 문장 스타일을 쓰도록 공유하는 모듈.
+ * 실데이터만으로 만드는 결정론적 문장이라 새로고침해도 데이터가 같으면 항상 같은 문장이 나옵니다.
+ */
+(function () {
+  const SKY_KEY = { "1": "sky.clear", "3": "sky.partlyCloudy", "4": "sky.cloudy" };
+  const AIR_KEY = { "1": "air.good", "2": "air.moderate", "3": "air.bad", "4": "air.veryBad" };
+
+  function tr(key, vars) {
+    return window.olaI18n ? olaI18n.t(key, vars) : key;
+  }
+
+  function airGradeText(grade) {
+    const key = AIR_KEY[String(grade)];
+    return key ? tr(key) : null;
+  }
+
+  // "전날 대비" 비교 — 별도 과거 관측 API 없이, 우리가 직접 확인했던 최고기온을
+  // 브라우저(localStorage)에 지역별로 기록해뒀다가 다음 확인 때 비교합니다.
+  // 그래서 이 브라우저로 처음 켜보는 날이거나 기록이 없으면 비교 문장은 안 나옵니다(추측 금지).
+  const HISTORY_KEY = "ola-weather-history";
+
+  function readHistory() {
+    try {
+      return JSON.parse(localStorage.getItem(HISTORY_KEY) || "{}");
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function writeHistory(history) {
+    try {
+      localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
+    } catch (e) {
+      /* 저장 실패(용량 등)는 무시 — 비교 문구가 안 나올 뿐 나머지 브리핑엔 영향 없음 */
+    }
+  }
+
+  function daysBetween(fromDateStr, toDateStr) {
+    const toDate = (s) => new Date(`${s.slice(0, 4)}-${s.slice(4, 6)}-${s.slice(6, 8)}T00:00:00`);
+    return Math.round((toDate(toDateStr) - toDate(fromDateStr)) / (1000 * 60 * 60 * 24));
+  }
+
+  function buildCompareLine(regionLabel, forecast) {
+    if (!forecast || !forecast.fcstDate || forecast.tmx === undefined) return "";
+    const todayDate = forecast.fcstDate;
+    const todayTmx = Number(forecast.tmx);
+    if (Number.isNaN(todayTmx)) return "";
+
+    const history = readHistory();
+    const entry = history[regionLabel] || {};
+
+    // 오늘 처음 확인하는 거라면, 그동안 기록해둔 "오늘 값"을 이제 비교 기준(lastDate/lastTmx)으로 승격
+    if (entry.recordedDate && entry.recordedDate !== todayDate) {
+      entry.lastDate = entry.recordedDate;
+      entry.lastTmx = entry.recordedTmx;
+    }
+
+    let compareLine = "";
+    if (entry.lastDate && entry.lastDate !== todayDate && entry.lastTmx !== undefined) {
+      const diff = Math.round((todayTmx - Number(entry.lastTmx)) * 10) / 10;
+      const gapDays = daysBetween(entry.lastDate, todayDate);
+      const refLabel = gapDays === 1
+        ? tr("common.yesterday")
+        : tr("briefing.lastCheck", { md: `${entry.lastDate.slice(4, 6)}.${entry.lastDate.slice(6, 8)}` });
+      if (diff > 0) compareLine = tr("briefing.compareHigher", { ref: refLabel, diff });
+      else if (diff < 0) compareLine = tr("briefing.compareLower", { ref: refLabel, diff: Math.abs(diff) });
+      else compareLine = tr("briefing.compareSame", { ref: refLabel });
+    }
+
+    entry.recordedDate = todayDate;
+    entry.recordedTmx = todayTmx;
+    history[regionLabel] = entry;
+    writeHistory(history);
+
+    return compareLine;
+  }
+
+  // weatherLabelRaw: 기상청 API 원문(항상 한국어) — 폭염/한파/대설 등 종류 판별은 이 값으로 합니다.
+  // weatherLabel(번역본)은 문장에 그대로 넣을 표시용 텍스트입니다.
+  // weatherState: "active" | "none" | "failed" (미지정 시 weatherLabel 문자열로 하위호환 추정)
+  function buildBriefingText({ regionLabel, forecast, weatherLabel, weatherLabelRaw, weatherState, air }) {
+    const parts = [];
+    if (forecast) {
+      const skyKey = SKY_KEY[String(forecast.sky)];
+      if (skyKey) parts.push(tr(skyKey));
+      if (forecast.tmp !== undefined) parts.push(tr("briefing.tempPart", { tmp: forecast.tmp }));
+    }
+    const airText = air ? airGradeText(air.grade10) : null;
+    if (airText) parts.push(tr("briefing.dustPart", { grade: airText }));
+
+    const factLine = parts.length
+      ? tr("briefing.factLine", { region: regionLabel, parts: parts.join(", ") })
+      : tr("briefing.factLineLoading", { region: regionLabel });
+
+    // 오늘의 최저/최고기온 (기상청 단기예보 TMN/TMX 기준)
+    let tempRangeLine = "";
+    if (forecast && (forecast.tmn !== undefined || forecast.tmx !== undefined)) {
+      const rangeParts = [];
+      if (forecast.tmn !== undefined) rangeParts.push(tr("briefing.tempMinPart", { tmn: forecast.tmn }));
+      if (forecast.tmx !== undefined) rangeParts.push(tr("briefing.tempMaxPart", { tmx: forecast.tmx }));
+      tempRangeLine = tr("briefing.tempRangeLine", { range: rangeParts.join(", ") });
+    }
+
+    // 전날 대비 최고기온 비교 (우리가 직접 기록해둔 값과만 비교 — 새 API 없이도 동작)
+    const compareLine = buildCompareLine(regionLabel, forecast);
+
+    // 특보 조회 자체가 실패한 경우엔 "특보 없음"이라고 단정하지 않고 조용히 넘어감 (모르는 걸 안다고 하지 않기 위함)
+    // weatherState가 없으면(하위호환) 번역 전 텍스트가 없어 판별이 어려우므로 "active"로 간주해 표시는 하되,
+    // 종류 판별용 weatherLabelRaw도 없으면 폭염/한파 감지는 건너뜁니다.
+    const state = weatherState || (weatherLabel ? "active" : "none");
+    let warnLine = "";
+    if (state === "active" && weatherLabel) {
+      warnLine = tr("briefing.warnActive", { label: weatherLabel });
+    } else if (state === "none") {
+      warnLine = tr("briefing.warnNone");
+    }
+    // state === "failed" 인 경우엔 warnLine을 비워둠 (모르는 걸 안다고 하지 않기 위함)
+
+    // 습도가 높으면 실제 기온보다 체감온도가 높게 느껴질 수 있음을 안내
+    const reh = forecast ? Number(forecast.reh) : NaN;
+    const feelsLikeLine = !Number.isNaN(reh) && reh >= 70 ? tr("briefing.feelsLike", { reh: forecast.reh }) : "";
+
+    // 실시간 예보/특보 기반 행동 추천 — 해당하는 조건마다 각각 한 줄씩 추가(서로 안 겹치는 항목이면 동시에 표시)
+    // forecast 자체가 없을 때도(단기예보 API 실패 등) 문장이 너무 짧아지지 않도록 실패 사실을 알리는
+    // 문구로 대체함 (숫자를 지어내지 않음)
+    const adviceLines = [];
+    if (forecast) {
+      const pty = Number(forecast.pty);
+      const pop = Number(forecast.pop);
+      const tmp = Number(forecast.tmp);
+      const rawLabel = weatherLabelRaw || "";
+      const isHeatWarning = rawLabel.includes("폭염");
+      const isColdWarning = rawLabel.includes("한파") || rawLabel.includes("대설");
+
+      // 폭염(특보 활성 또는 고온) — 수분 섭취·야외활동 자제 안내
+      if (isHeatWarning || (!Number.isNaN(tmp) && tmp >= 33)) {
+        adviceLines.push(tr("briefing.adviceHeat"));
+      }
+      // 한파/대설 — 방한 안내
+      if (isColdWarning || (!Number.isNaN(tmp) && tmp <= 0)) {
+        adviceLines.push(tr("briefing.adviceCold"));
+      }
+
+      // 비/눈 — 지금 내리는 중인지, 오늘 중 시작 예정인지, 확률만 높은지 구분해서 안내
+      if (pty === 1 || pty === 4) {
+        adviceLines.push(tr("briefing.adviceRainNow"));
+      } else if (pty === 2 || pty === 3) {
+        adviceLines.push(tr("briefing.adviceSnowNow"));
+      } else if (forecast.rainStartTime) {
+        const hh = Number(forecast.rainStartTime.slice(0, 2));
+        adviceLines.push(tr("briefing.adviceRainStart", { hh }));
+      } else if (!Number.isNaN(pop) && pop >= 60) {
+        adviceLines.push(tr("briefing.advicePopHigh", { pop: forecast.pop }));
+      }
+    }
+
+    // 미세먼지가 나쁨 이상이면 마스크 착용 안내 (forecast 성공 여부와 무관하게, air 데이터만 있으면 표시)
+    const airGrade = air ? Number(air.grade10) : NaN;
+    if (!Number.isNaN(airGrade) && airGrade >= 3) {
+      adviceLines.push(tr("briefing.adviceDustMask", { grade: airGradeText(air.grade10) }));
+    }
+
+    if (!adviceLines.length) {
+      if (forecast) adviceLines.push(tr("briefing.adviceFallbackOk"));
+      else adviceLines.push(tr("briefing.adviceFallbackFail"));
+    }
+
+    // 문장이 끝날 때마다 줄바꿈되도록 <br>로 이어붙임 (표시하는 쪽에서 innerHTML로 넣어야 함)
+    return [factLine, tempRangeLine, compareLine, warnLine, feelsLikeLine, ...adviceLines]
+      .map((s) => s.trim())
+      .filter(Boolean)
+      .join("<br>");
+  }
+
+  window.olaBuildBriefingText = buildBriefingText;
+  window.olaBuildCompareLine = buildCompareLine;
+})();</script>
+
+  <script>
+    lucide.createIcons();
+
+    // File Configurations
+    const FILE_DATA = {
+      html: {
+        filename: "index.html",
+        lang: "HTML",
+        startLine: 269,
+        description: "브리핑 텍스트 영역 마크업 — #ai-briefing-text에 innerHTML로 문장이 채워집니다.",
+        context: "#ai-briefing-text"
+      },
+      css: {
+        filename: "components.css",
+        lang: "CSS",
+        startLine: 1,
+        description: "카드 레이아웃(.ola-card) 담당. 줄바꿈은 index.html의 Tailwind 클래스가 처리합니다.",
+        context: ".ola-card"
+      },
+      js: {
+        filename: "briefing-text.js",
+        lang: "JavaScript",
+        startLine: 1,
+        description: "항목별 브리핑 문구 조합 로직 — buildBriefingText()가 문장을 조립합니다.",
+        context: "buildBriefingText()"
+      }
+    };
+
+    let activeLang = "html";
+
+    function escapeHtml(str) {
+      return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+
+    // VS Code Syntax Highlighters
+    function highlightHTML(raw) {
+      const esc = escapeHtml(raw);
+      const RE = /(&lt;!--[\s\S]*?--&gt;)|(&lt;\/?[a-zA-Z][\w-]*)|(\/?&gt;)|([a-zA-Z_:][\w:-]*)(?==")|("[^"]*")/g;
+      return esc.replace(RE, (m, comment, tagOpen, tagClose, attr, str) => {
+        if (comment) return `<span class="tok-comment">${m}</span>`;
+        if (tagOpen) return `<span class="tok-tag">${m}</span>`;
+        if (tagClose) return `<span class="tok-tag">${m}</span>`;
+        if (attr) return `<span class="tok-attr">${m}</span>`;
+        if (str) return `<span class="tok-string">${m}</span>`;
+        return m;
+      });
+    }
+
+    function highlightCSS(raw) {
+      const esc = escapeHtml(raw);
+      const RE = /(\/\*[\s\S]*?\*\/)|(^[ \t]*\.[a-zA-Z][\w-]*(?::[a-zA-Z-]+)?(?=\s*\{))|(\b[a-zA-Z-]+(?=\s*:))|(var\([^)]*\))|(-?\b\d+(?:\.\d+)?(?:px|s|%)?\b)/gm;
+      return esc.replace(RE, (m, comment, selector, prop, varFn, num) => {
+        if (comment) return `<span class="tok-comment">${m}</span>`;
+        if (selector) return `<span class="tok-selector">${m}</span>`;
+        if (prop) return `<span class="tok-property">${m}</span>`;
+        if (varFn) return `<span class="tok-string">${m}</span>`;
+        if (num) return `<span class="tok-number">${m}</span>`;
+        return m;
+      });
+    }
+
+    function highlightJS(raw) {
+      const esc = escapeHtml(raw);
+      const RE = /(\/\*[\s\S]*?\*\/)|(\/\/.*)|("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|`(?:[^`\\]|\\.)*`)|(\b(?:function|const|let|var|if|else|return|try|catch)\b)|(\b\d+(?:\.\d+)?\b)/g;
+      return esc.replace(RE, (m, blockC, lineC, str, kw, num) => {
+        if (blockC || lineC) return `<span class="tok-comment">${m}</span>`;
+        if (str) return `<span class="tok-string">${m}</span>`;
+        if (kw) return `<span class="tok-keyword">${m}</span>`;
+        if (num) return `<span class="tok-number">${m}</span>`;
+        return m;
+      });
+    }
+
+    function renderMinimap(lineCount) {
+      const minimap = document.getElementById("minimap-bg");
+      minimap.innerHTML = "";
+      for (let i = 0; i < Math.min(lineCount, 80); i++) {
+        const line = document.createElement("div");
+        line.className = "minimap-line";
+        line.style.width = Math.floor(Math.random() * 60 + 20) + "%";
+        if (Math.random() > 0.7) line.style.background = "#569cd6";
+        minimap.appendChild(line);
+      }
+    }
+
+    function switchFile(lang) {
+      activeLang = lang;
+      const meta = FILE_DATA[lang];
+      const raw = document.getElementById(`src-${lang}`).textContent.replace(/^\n/, "").replace(/\n$/, "");
+      const lines = raw.split("\n");
+
+      // Render Line Gutter
+      const gutter = document.getElementById("line-gutter");
+      gutter.innerHTML = lines.map((_, i) => meta.startLine + i).join("<br>");
+
+      // Syntax Highlight
+      const codeElem = document.getElementById("code-display");
+      if (lang === "html") codeElem.innerHTML = highlightHTML(raw);
+      else if (lang === "css") codeElem.innerHTML = highlightCSS(raw);
+      else if (lang === "js") codeElem.innerHTML = highlightJS(raw);
+
+      // UI Context Updates
+      document.getElementById("titlebar-filename").textContent = `${meta.filename} — ola-briefing-card - Visual Studio Code`;
+      document.getElementById("breadcrumb-file").textContent = meta.filename;
+      document.getElementById("breadcrumb-context").textContent = meta.context;
+      document.getElementById("file-description").textContent = meta.description;
+      document.getElementById("status-lang").textContent = meta.lang;
+      document.getElementById("status-line-col").textContent = `Ln ${meta.startLine}, Col 1`;
+
+      // Active state on Tabs & Sidebar
+      document.querySelectorAll(".tab").forEach(t => {
+        t.classList.toggle("active", t.dataset.lang === lang);
+      });
+      document.querySelectorAll(".tree-item").forEach(item => {
+        item.classList.toggle("active", item.dataset.target === lang);
+      });
+
+      renderMinimap(lines.length);
+    }
+
+    // Event Listeners for Tabs and Sidebar
+    document.querySelectorAll(".tab").forEach(tab => {
+      tab.addEventListener("click", () => switchFile(tab.dataset.lang));
+    });
+
+    document.querySelectorAll(".tree-item").forEach(item => {
+      item.addEventListener("click", () => switchFile(item.dataset.target));
+    });
+
+    // Explorer Toggle Functionality
+    const explorerBtn = document.getElementById("explorer-toggle-btn");
+    const sidebar = document.querySelector(".sidebar");
+
+    explorerBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("hidden");
+      explorerBtn.classList.toggle("active", !sidebar.classList.contains("hidden"));
+    });
+
+    // Copy Code Functionality
+    document.getElementById("copy-btn").addEventListener("click", () => {
+      const rawText = document.getElementById(`src-${activeLang}`).textContent.trim();
+      
+      const textarea = document.createElement("textarea");
+      textarea.value = rawText;
+      document.body.appendChild(textarea);
+      textarea.select();
+      
+      try {
+        document.execCommand("copy");
+        showToast(`'${FILE_DATA[activeLang].filename}' 코드가 복사되었습니다.`);
+      } catch (err) {
+        showToast("복사 실패. 다시 시도해 주세요.");
+      } finally {
+        document.body.removeChild(textarea);
+      }
+    });
+
+    function showToast(msg) {
+      const toast = document.getElementById("vscode-toast");
+      document.getElementById("toast-msg").textContent = msg;
+      toast.classList.add("show");
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 3000);
+    }
+
+    // Initial load
+    switchFile("html");
+  </script>
+</body>
+</html>
