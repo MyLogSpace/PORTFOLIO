@@ -2006,7 +2006,7 @@ export default AIWorkflow;</div>
                         <span>📁</span> / Portfolio / MORE_WORKS
                     </div>
                 </div>
-                <span class="text-xs font-medium text-gray-400 flex-shrink-0">총 3개 항목</span>
+                <span class="text-xs font-medium text-gray-400 flex-shrink-0">총 5개 항목</span>
             </div>
 
             <!-- 폴더 창 바디: 파일 아이콘 그리드 -->
@@ -2034,6 +2034,22 @@ export default AIWorkflow;</div>
                         <span class="text-xs font-bold text-gray-800 text-center mt-1">추억의 일기장</span>
                         <span class="text-[10px] text-gray-400 text-center leading-tight">레거시 UI 재현 · 파티클 애니메이션</span>
                         <span class="text-[9px] font-bold text-pink-600 bg-pink-50 border border-pink-100 rounded-full px-2 py-0.5 mt-1">Daily Assignment</span>
+                    </button>
+
+                    <!-- File 4: FINANCE_DESK -->
+                    <button type="button" onclick="openMoreworksDetail(4)" onmouseenter="setMoreworksSelected('FINANCE_DESK')" class="moreworks-file group flex flex-col items-center gap-2 p-3 rounded-2xl hover:bg-white transition-colors cursor-pointer">
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white border-2 border-pink-300 flex items-center justify-center text-3xl sm:text-4xl shadow-sm group-hover:-translate-y-1 group-hover:shadow-md transition-all">💰</div>
+                        <span class="text-xs font-bold text-gray-800 text-center mt-1">FINANCE_DESK</span>
+                        <span class="text-[10px] text-gray-400 text-center leading-tight">재경관리 시스템</span>
+                        <span class="text-[9px] font-bold text-pink-600 bg-pink-50 border border-pink-100 rounded-full px-2 py-0.5 mt-1">Solo Project</span>
+                    </button>
+
+                    <!-- File 5: HR_ASSISTANT -->
+                    <button type="button" onclick="openMoreworksDetail(5)" onmouseenter="setMoreworksSelected('HR_ASSISTANT')" class="moreworks-file group flex flex-col items-center gap-2 p-3 rounded-2xl hover:bg-white transition-colors cursor-pointer">
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white border-2 border-pink-300 flex items-center justify-center text-3xl sm:text-4xl shadow-sm group-hover:-translate-y-1 group-hover:shadow-md transition-all">🧑‍💼</div>
+                        <span class="text-xs font-bold text-gray-800 text-center mt-1">HR_ASSISTANT</span>
+                        <span class="text-[10px] text-gray-400 text-center leading-tight">AI 인사총무 어시스턴트</span>
+                        <span class="text-[9px] font-bold text-pink-600 bg-pink-50 border border-pink-100 rounded-full px-2 py-0.5 mt-1">AI Assistant Concept</span>
                     </button>
                 </div>
             </div>
@@ -2077,6 +2093,9 @@ export default AIWorkflow;</div>
                     <div class="text-xs text-gray-500 pt-3 border-t border-gray-100">
                         <span class="font-bold text-gray-700">구분:</span> <span id="moreworks-detail-category"></span>
                     </div>
+                    <a id="moreworks-detail-link" href="#" target="_blank" rel="noopener noreferrer" class="hidden items-center gap-1.5 text-xs font-bold text-pink-600 hover:text-pink-700 transition-colors w-fit">
+                        🔗 배포 사이트 바로가기
+                    </a>
                 </div>
             </div>
 
@@ -2521,6 +2540,39 @@ export default AIWorkflow;</div>
                 ],
                 learning: '레거시 브라우저 UI를 픽셀 단위로 재현하며 CSS 세부 제어력을 길렀고, 순수 CSS/JS만으로 인터랙션을 만드는 재미를 느꼈습니다.',
                 sparkle: true
+            },
+            4: {
+                filename: 'finance_desk',
+                title: 'FINANCE_DESK',
+                emoji: '💰',
+                video: '',
+                link: 'https://mylogspace.github.io/FINANCE_DESK/',
+                summary: '로그인부터 대시보드, 급여대장, 지급결의서, 법인카드 대사, 예산 관리까지 — 중소기업 재경팀의 월간 업무 흐름을 하나의 웹 앱으로 구현한 재경관리 시스템입니다.',
+                category: 'Solo Project',
+                points: [
+                    '사원마스터 · 근태 · 4대보험 요율을 연동해 급여대장을 자동 계산하는 구조 설계',
+                    '법인카드 사용내역(CSV)을 가맹점 키워드 기반으로 자동 계정과목 분류',
+                    '세금계산서 ↔ 법인카드 사용내역을 자동 대사(matching)하고, 업무관련성 체크로 매입세액 불공제 항목을 분리 처리',
+                    '계정과목별 예산 대비 실적을 급여 · 지급결의서 · 법인카드 데이터에서 자동 집계'
+                ],
+                learning: '실무 경력을 바탕으로 급여·법인카드·세금계산서 흐름을 설계했지만, 아직 데모 단계라 실제 데이터로 검증해보지 못한 게 가장 아쉬운 부분입니다. 계산 로직과 자동 분류 규칙이 실제 업무 케이스에서도 잘 맞는지는 앞으로 검증하고 싶습니다.',
+                sparkle: false
+            },
+            5: {
+                filename: 'hr_assistant',
+                title: 'HR_ASSISTANT',
+                emoji: '🧑\u200d💼',
+                video: '',
+                link: 'https://mylogspace.github.io/HR_ASSISTANT/',
+                summary: '근태 · 연차 관리부터 급여, 퇴직금, 인사평가, 퇴사 위험도 예측, 사내규정 FAQ 챗봇까지 아우르는 AI 기반 인사총무 어시스턴트 컨셉입니다.',
+                category: 'AI Assistant Concept',
+                points: [
+                    '근속연수 · 야근시간 증감 · 연차 사용률 · 최근 평가등급 변화를 입력받아 퇴사 위험도를 점수화하는 시뮬레이터 구현',
+                    '인사평가 등급 체계와 퇴사 위험도 예측 로직의 평가 기준을 통일해 데이터 일관성 확보',
+                    '자산 · 비품 관리를 근태 탭 임직원 명단과 매칭해 사용자 자동 표시'
+                ],
+                learning: '실전 검증 전 단계이고, 특히 사내규정 FAQ 챗봇을 실제 API 연동 없이 키워드 매칭 방식으로만 구현한 점이 아쉽습니다. 실제 자연어 이해가 아닌 만큼 다양한 질문 표현에 대응하기엔 한계가 있어서, 추후 LLM 연동으로 개선하고 싶습니다.',
+                sparkle: false
             }
         };
 
@@ -2579,12 +2631,19 @@ export default AIWorkflow;</div>
 
             const videoEl = document.getElementById('moreworks-detail-video');
             const emojiEl = document.getElementById('moreworks-detail-emoji');
-            videoEl.style.display = '';
-            videoEl.src = d.video;
-            videoEl.load();
-            videoEl.play().catch(() => {});
             emojiEl.textContent = d.emoji;
-            emojiEl.style.display = 'none';
+            if (d.video) {
+                videoEl.style.display = '';
+                videoEl.src = d.video;
+                videoEl.load();
+                videoEl.play().catch(() => {});
+                emojiEl.style.display = 'none';
+            } else {
+                videoEl.pause();
+                videoEl.removeAttribute('src');
+                videoEl.style.display = 'none';
+                emojiEl.style.display = 'flex';
+            }
 
             const pointsEl = document.getElementById('moreworks-detail-points');
             pointsEl.innerHTML = '';
@@ -2595,6 +2654,16 @@ export default AIWorkflow;</div>
                 pointsEl.appendChild(li);
             });
             document.getElementById('moreworks-detail-learning').textContent = d.learning;
+
+            const linkEl = document.getElementById('moreworks-detail-link');
+            if (d.link) {
+                linkEl.href = d.link;
+                linkEl.classList.remove('hidden');
+                linkEl.classList.add('flex');
+            } else {
+                linkEl.classList.add('hidden');
+                linkEl.classList.remove('flex');
+            }
 
             const starLayer = document.getElementById('moreworks-detail-star-layer');
             if (d.sparkle) {
