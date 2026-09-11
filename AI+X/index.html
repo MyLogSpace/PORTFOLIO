@@ -39,7 +39,6 @@
         ::-webkit-scrollbar-thumb { background: #f472b6; border-radius: 9999px; }
         ::-webkit-scrollbar-thumb:hover { background: #ec4899; }
 
-        /* 추억의 일기장: 싸이월드 반짝이 별 효과 (원본 그대로 이식) */
         .star-container {
             position: absolute;
             top: 0;
@@ -70,7 +69,6 @@
             50% { opacity: 1; transform: scale(1.4) rotate(180deg); }
         }
         
-        /* 스크롤 애니메이션 */
         .fade-up {
             opacity: 0;
             transform: translateY(40px);
@@ -81,7 +79,6 @@
             transform: translateY(0);
         }
 
-        /* 아바타 애니메이션 */
         .avatar-float {
             animation: float 6s ease-in-out infinite;
         }
@@ -101,14 +98,12 @@
             50% { transform: translateY(8px) rotate(-6deg); }
         }
 
-        /* 텍스트 그라데이션 */
         .gradient-text-custom {
             background: linear-gradient(to right, #FF8A8A, #D66DED, #FF9E6D);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* AI WORKFLOW 스텝 네비게이션: 카드가 아닌 하나의 연결된 흐름 (라이트 테마) */
         .step-num { background: #F1F5F9; color: #64748B; transition: background-color .25s, color .25s, transform .25s; }
         .step-title { color: #94A3B8; transition: color .25s; }
         .step-sub { color: #CBD5E1; transition: color .25s; }
@@ -118,7 +113,6 @@
         .step-flow-item:hover:not(.is-active) .step-num { background: #FCE7F3; }
         .step-flow-item:hover:not(.is-active) .step-title { color: #64748B; }
 
-        /* 스텝을 잇는 연결선 */
         .step-flow-item { position: relative; }
         .step-flow-item:not(:first-child)::before {
             content: '';
@@ -131,7 +125,6 @@
             z-index: 0;
         }
 
-        /* 워크플로우 하단 페이지네이션 점 */
         .workflow-dot {
             width: 8px;
             height: 8px;
@@ -148,14 +141,12 @@
             background: #DB2777;
         }
 
-        /* Slide 카운터 배지 등장 모션 */
         .slide-badge { animation: slideBadgeIn 0.4s ease; }
         @keyframes slideBadgeIn {
             from { opacity: 0; transform: scale(0.8); }
             to { opacity: 1; transform: scale(1); }
         }
 
-        /* ===== OLA 스티키 목업 시뮬레이터 애니메이션 ===== */
         .ola-caret { animation: ola-blink 1s steps(1) infinite; }
         @keyframes ola-blink { 50% { opacity: 0; } }
 
@@ -191,12 +182,10 @@
             50% { box-shadow: 0 0 0 6px rgba(16,224,157,0); }
         }
 
-        /* 스텝 네비게이션 버튼 (재생 컨트롤러) */
         .ola-step-nav-btn { background: #1e293b; color: #94a3b8; }
         .ola-step-nav-btn:hover { background: #334155; color: #fff; }
         .ola-step-nav-btn.is-active { background: #00C896; color: #020617; box-shadow: 0 4px 10px -2px rgba(0,200,150,0.3); }
 
-        /* ===== OLA Scene 1/2/3 신규 컴포넌트 애니메이션 (안전지도 / 커뮤니티톡 / 다국어기능) ===== */
         .ola-map-pin { transition: opacity .4s ease, transform .4s ease; transform: translateY(4px); }
         .ola-map-pin.is-in { opacity: 1 !important; transform: translateY(0); }
 
@@ -216,14 +205,12 @@
         .ola-lang-btn.is-active { background: #00C896; color: #020617; }
         #ola-lang-title, #ola-lang-body { transition: opacity .3s ease; }
 
-        /* OLA봇 마스코트 통통 튀는 모션 */
         .ola-bot-mascot { animation: ola-bot-bounce 1.8s ease-in-out infinite; }
         @keyframes ola-bot-bounce {
             0%, 100% { transform: translateY(0) scale(1); }
             50% { transform: translateY(-8px) scale(1.03); }
         }
 
-        /* ===== WAYO 스티키 목업 시뮬레이터 애니메이션 ===== */
         .wayo-fade-in { transition: opacity .3s ease; }
         .wayo-fade-in.is-in { opacity: 1 !important; animation: wayo-popin .4s ease-out; }
         @keyframes wayo-popin {
@@ -247,14 +234,12 @@
         .wayo-skeleton { transition: opacity .3s ease; }
         .wayo-skeleton.is-in { opacity: 1 !important; animation: wayo-fadeup .5s ease-out; }
 
-        /* 스텝 네비게이션 버튼 (재생 컨트롤러) */
         .wayo-step-nav-btn { background: #1e293b; color: #94a3b8; }
         .wayo-step-nav-btn:hover { background: #334155; color: #fff; }
         .wayo-step-nav-btn.is-active { background: #F5B300; color: #1a1400; box-shadow: 0 4px 10px -2px rgba(245,179,0,0.3); }
 
         .wayo-mock-card { transition: all .3s ease; }
 
-        /* 코드/카드 스크롤바: 2px로 통일 (가로/세로 동일) */
         .code-scrollbar { scrollbar-width: thin; }
         .code-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
         .code-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; }
@@ -265,7 +250,6 @@
         .current-badge { opacity: 0; transition: opacity .25s; }
         .step-tab-btn.is-active .current-badge { opacity: 1; }
 
-        /* 화이트 네비게이션 (AI ADDICTED 컨셉 컬러 - 라이트) */
         .glass-nav {
             background: rgba(252, 246, 248, 0.8);
             backdrop-filter: blur(12px);
@@ -278,7 +262,6 @@
             background-clip: text;
         }
 
-        /* 네비게이션 링크: 클릭 시 핑크 텍스트 + 은은한 원형 테두리, 호버는 가볍게 */
         .nav-link {
             position: relative;
             padding: 6px 16px;
@@ -296,7 +279,6 @@
             border-color: rgba(219, 39, 119, 0.25);
         }
 
-        /* 아바타 배경 코드 스니펫 스크롤 */
         .code-scroll-track {
             animation: codeScroll 28s linear infinite;
         }
@@ -305,7 +287,6 @@
             to { transform: translateY(-50%); }
         }
 
-        /* 브라우저 목업 스타일 (Mac OS 스타일) */
         .browser-mockup {
             border-top-left-radius: 8px;
             border-top-right-radius: 8px;
@@ -329,7 +310,6 @@
         .dot-yellow { background-color: #FFBD2E; }
         .dot-green { background-color: #27C93F; }
 
-        /* 타임라인 커스텀 */
         .journey-line::before {
             content: '';
             position: absolute;
@@ -364,12 +344,10 @@
 
     <!-- 01. COVER -->
     <header class="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden bg-gradient-to-b from-pink-50/60 via-white to-[#FCF6F8]" id="cover">
-        <!-- 배경 장식 -->
         <div class="absolute top-1/4 left-10 w-72 h-72 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-pulse"></div>
         <div class="absolute bottom-1/4 right-10 w-96 h-96 bg-pink-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-pulse" style="animation-delay: 2s;"></div>
         
         <div class="relative z-10 max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-16 md:gap-20 w-full">
-            <!-- Text Content -->
             <div class="md:w-3/5 text-left order-2 md:order-1">
                 <p class="text-xs text-pink-600 font-bold tracking-wider mb-1 fade-up">AI PRODUCT BUILDER</p>
                 <p class="text-sm text-gray-400 font-medium tracking-wide mb-5 fade-up">실무 경험과 빠른 기술 습득력을 갖춘 빌더</p>
@@ -387,10 +365,8 @@
                 </p>
             </div>
             
-            <!-- Avatar Image -->
             <div class="md:w-2/5 flex justify-center order-1 md:order-2 fade-up">
                 <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full p-1 bg-gradient-to-tr from-[#F5A9D0] to-[#FEE0F5] shadow-2xl avatar-float">
-                    <!-- 궤도 아이콘: AI(퍼플) / 나(핑크) -->
                     <div class="absolute -top-2 -right-2 md:top-0 md:-right-3 w-11 h-11 md:w-12 md:h-12 rounded-full bg-white border-2 border-purple-200 shadow-lg flex items-center justify-center z-20 avatar-orbit-1">
                         <svg class="w-5 h-5 md:w-5.5 md:h-5.5 text-purple-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="7" width="14" height="12" rx="3"/><path d="M9 3.5 10.5 7M15 3.5 13.5 7"/><circle cx="9.5" cy="13" r="1.2" fill="currentColor" stroke="none"/><circle cx="14.5" cy="13" r="1.2" fill="currentColor" stroke="none"/><path d="M9 16.5c1 .8 3 .8 4 0"/><path d="M2.5 12h2.5M19 12h2.5"/></svg>
                     </div>
@@ -398,7 +374,6 @@
                         <svg class="w-5 h-5 md:w-5.5 md:h-5.5 text-pink-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20c0-3.6 3.4-6.5 7.5-6.5s7.5 2.9 7.5 6.5"/></svg>
                     </div>
                     <div class="relative w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-[#D6EEF6] via-[#EAF2E9] to-[#FCEFDC]">
-                        <!-- 네트워크 노드 그래픽 -->
                         <svg viewBox="0 0 200 200" class="absolute inset-0 w-full h-full pointer-events-none select-none opacity-20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g stroke="#5A8CDC" stroke-width="1">
                                 <line x1="138" y1="12" x2="162" y2="9"/>
@@ -433,7 +408,6 @@
                             <circle cx="140" cy="72" r="2.5" fill="#96B4EB"/>
                             <circle cx="178" cy="84" r="3" fill="#1E3CBE" stroke="#5A8CDC" stroke-width="2"/>
                         </svg>
-                        <!-- Code Snippet Background (캐릭터 뒤에서 비쳐 보이는 코드) -->
                         <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none opacity-10">
                             <div class="code-scroll-track font-mono text-[9px] md:text-[11px] leading-5 text-gray-900 whitespace-pre">
 const generatePrototype = async (idea) => {
@@ -532,7 +506,6 @@ try {
 export default AIWorkflow;</div>
                         </div>
 
-                        <!-- 캐릭터 (투명 배경) -->
                         <img src="../hana_avatar_transparent.png" alt="Hana Avatar" class="relative z-10 w-full h-full object-cover" onerror="this.src='https://placehold.co/400x400/EEEBFD/5B3FF5?text=HANA'">
                     </div>
                 </div>
@@ -548,9 +521,7 @@ export default AIWorkflow;</div>
                 <p class="text-lg text-gray-500">생활안전 정보를 한 곳에, AI가 도와주는 생활 밀착형 안전 플랫폼입니다.</p>
             </div>
 
-            <!-- PROJECT 01: OLA (Editorial Scroll) -->
             <div class="space-y-6 bg-white p-6 sm:p-8 md:p-12 rounded-[2.5rem] shadow-sm border border-gray-100 mb-16 fade-up">
-                <!-- Header + Metrics -->
                 <div>
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                         <div class="lg:col-span-6 space-y-3">
@@ -590,18 +561,14 @@ export default AIWorkflow;</div>
                         </div>
                     </div>
 
-                    <!-- 핵심 판단 바: 워크플로우 PROCESS 탭과 동일한 스타일 -->
                     <div class="flex items-center mt-6 mb-6 -mx-6 sm:-mx-8 md:-mx-12 px-6 sm:px-8 md:px-12 py-3 border-t border-b border-slate-100">
                         <span class="text-xs font-bold text-slate-500 tracking-wide">공식 출처 기반 정보만 활용하는 데이터 원칙을 세우고, 이를 기준으로 서비스 전체를 설계했습니다.</span>
                     </div>
                 </div>
 
-                <!-- Scrollytelling: 좌측(고정 목업)이 더 크고, 우측(내러티브)이 더 작음 -->
                 <div class="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    <!-- LEFT: STICKY MOCKUP (더 큰 비율) -->
                     <div class="lg:col-span-7 lg:sticky lg:top-24">
                         <div id="ola-simulator" class="relative bg-slate-950/90 backdrop-blur-md border border-white/10 rounded-3xl shadow-2xl shadow-black/40 overflow-hidden">
-                            <!-- 상단 탭 바: 신호등 + 로고 + Live Simulator 라벨 -->
                             <div class="h-10 bg-slate-900/90 border-b border-white/10 px-4 flex items-center justify-between select-none">
                                 <div class="flex items-center gap-2.5 flex-shrink-0">
                                     <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
@@ -613,10 +580,7 @@ export default AIWorkflow;</div>
                                 <div class="text-[10px] text-slate-500 font-mono hidden sm:block flex-shrink-0">AI Engine: Active</div>
                             </div>
 
-                            <!-- 콘텐츠 영역 -->
                             <div class="relative h-80 overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900/40 to-slate-950">
-                                <!-- Scene 1 (0~3초): 선제적 AI 브리핑 -->
-                                <!-- Scene 1 (0~3초): 안전지도 (Safety Map) -->
                                 <div id="ola-scene-1" class="ola-scene absolute inset-0 p-4 flex flex-col gap-2.5 transition-all duration-700 ease-in-out">
                                     <div class="flex items-center justify-between flex-shrink-0">
                                         <span class="text-[13px] font-bold text-white">안심·비상 시설 지도</span>
@@ -687,7 +651,6 @@ export default AIWorkflow;</div>
                                     </div>
                                 </div>
 
-                                <!-- Scene 2 (3~6초): 커뮤니티톡 (Community Talk) -->
                                 <div id="ola-scene-2" class="ola-scene absolute inset-0 p-4 hidden flex-col gap-2 transition-all duration-700 ease-in-out">
                                     <div class="flex items-center justify-between bg-ola-green/10 border border-ola-green/30 rounded-xl px-3 py-2 flex-shrink-0">
                                         <span class="text-[11px] font-bold text-ola-green truncate">📢 실시간 현장 제보 3건 접수됨</span>
@@ -731,7 +694,6 @@ export default AIWorkflow;</div>
                                     </div>
                                 </div>
 
-                                <!-- Scene 3 (6~9초): 다국어 기능 (Multi-language Support) -->
                                 <div id="ola-scene-3" class="ola-scene absolute inset-0 p-4 hidden flex-col gap-3 transition-all duration-700 ease-in-out">
                                     <div class="flex items-center justify-between flex-shrink-0">
                                         <span class="text-[13px] font-bold text-white">AI 실시간 안전 브리핑</span>
@@ -750,7 +712,6 @@ export default AIWorkflow;</div>
                                     <div class="text-[10px] text-slate-500 text-center flex-shrink-0">번역 정확도 검증 완료 · Fallback: 한국어</div>
                                 </div>
 
-                                <!-- Scene 4 (9~12초): 생명지수 (Life Safety Index) -->
                                 <div id="ola-scene-4" class="ola-scene absolute inset-0 p-4 hidden flex-col gap-2.5 transition-all duration-700 ease-in-out">
                                     <div class="flex items-center justify-between flex-shrink-0">
                                         <span class="text-[13px] font-bold text-white">오늘의 생명 지수</span>
@@ -784,10 +745,8 @@ export default AIWorkflow;</div>
                                 </div>
 
 
-                                <!-- OLA봇 마스코트: 모든 씬에서 통통 튀는 모션으로 상주 -->
                                 <img src="../assets/OLA/olabot.png" alt="OLA봇" class="ola-bot-mascot absolute z-40 pointer-events-none w-12 sm:w-14 h-auto object-contain drop-shadow-2xl" style="bottom: 10px; right: 10px;">
 
-                                <!-- 가상 마우스 커서 -->
                                 <div id="ola-cursor" class="absolute z-50 pointer-events-none transition-all duration-1000 ease-in-out" style="top: 65%; left: 72%;">
                                     <div class="relative">
                                         <div class="w-5 h-5 rounded-full bg-ola-green/90 border-2 border-white shadow-xl flex items-center justify-center animate-pulse">
@@ -800,7 +759,6 @@ export default AIWorkflow;</div>
                                 </div>
                             </div>
 
-                            <!-- MacBook Touch Bar 스타일 컨트롤러: 본체 하단에 통합 -->
                             <div class="border-t border-white/10 bg-slate-900/95 px-3 py-2 flex items-center gap-2.5">
                                 <button type="button" id="ola-play-btn" onclick="toggleOlaPlay()" class="flex items-center justify-center w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all active:scale-95 flex-shrink-0" aria-label="재생/일시정지" title="재생/일시정지">
                                     <svg id="ola-icon-pause" class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
@@ -820,7 +778,6 @@ export default AIWorkflow;</div>
                             </div>
                         </div>
 
-                        <!-- AI ROLE / MY DECISION (시뮬레이터 하단) -->
                         <div class="mt-4 grid grid-cols-2 gap-3">
                             <div class="bg-purple-50/50 border border-purple-100 rounded-2xl p-4">
                                 <span class="text-[10px] font-bold text-purple-600 uppercase tracking-wider block mb-2">🤖 AI ROLE (역할 정의)</span>
@@ -834,7 +791,6 @@ export default AIWorkflow;</div>
                     </div>
 
 
-                    <!-- RIGHT: SCROLLABLE NARRATIVE 3 STEPS (더 작은 비율) -->
                     <div class="lg:col-span-5 space-y-6 py-2">
                         <div id="ola-step-1" onclick="olaManualStepSelect(1)" class="ola-story-step bg-gray-50 p-6 rounded-3xl border-2 border-ola-green space-y-3 cursor-pointer transition-all shadow-md" data-step="1">
                             <div class="flex items-center gap-3">
@@ -885,7 +841,6 @@ export default AIWorkflow;</div>
                     </div>
                 </div>
 
-                <!-- RESULT 요약 스트립 (OLA 카드 마지막) -->
                 <div class="mt-10 pt-6 border-t border-gray-200 flex items-center justify-between gap-2 flex-wrap">
                         <span class="flex items-center gap-3 text-sm flex-shrink-0">
                             <span class="text-gray-400">🎥 :</span>
@@ -911,14 +866,8 @@ export default AIWorkflow;</div>
                 <p class="text-slate-500 text-lg">AI에게 모든 것을 맡기지 않습니다. 문제를 나누고, 질문하고, 검증하고, 다시 시키며 완성합니다.</p>
             </div>
 
-            <!-- ============================================================
-                 [WORKFLOW CONSOLE] — 서하나_7step_v1.0 구조 반영
-                 헤더 · 스테퍼 · 콘텐츠 · 푸터를 하나의 콘솔 박스 안에 통합했습니다.
-                 스텝이 바뀔 때마다 JS(WORKFLOW_META)로 헤더 텍스트만 갈아끼웁니다.
-            ============================================================= -->
             <div class="bg-white rounded-[2rem] border border-slate-200 shadow-xl shadow-pink-100/50 p-5 sm:p-8">
 
-                <!-- Header -->
                 <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-4">
                     <div>
                         <h3 id="workflow-header-title" class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">문제 정의</h3>
@@ -933,7 +882,6 @@ export default AIWorkflow;</div>
                     </div>
                 </div>
 
-                <!-- 7단계 가로 인디케이터: 현재 단계만 브랜드 컬러 + 밑줄로 강조, 나머지는 연한 회색 -->
                 <div class="flex items-center gap-1.5 sm:gap-2.5 overflow-x-auto step-nav-scroll mb-6 -mx-5 sm:-mx-8 px-5 sm:px-8 py-3 border-t border-b border-slate-100" data-tabs data-version-tabs>
                     <span class="text-xs font-bold text-slate-400 tracking-wide flex-shrink-0">PROCESS :</span>
                     <button type="button" class="workflow-indicator-btn is-active text-xs font-bold tracking-wide whitespace-nowrap transition-all flex-shrink-0 p-0 border-0 bg-transparent appearance-none leading-none align-middle text-pink-600" data-base-class="workflow-indicator-btn text-xs font-bold tracking-wide whitespace-nowrap transition-all flex-shrink-0 p-0 border-0 bg-transparent appearance-none leading-none align-middle" data-tab-btn="s1" data-active-class="text-pink-600" data-inactive-class="text-slate-300 hover:text-slate-400">DISCOVER</button>
@@ -950,7 +898,6 @@ export default AIWorkflow;</div>
                     <span class="text-slate-200 text-xs flex-shrink-0">-</span>
                     <button type="button" class="workflow-indicator-btn text-xs font-bold tracking-wide whitespace-nowrap transition-all flex-shrink-0 p-0 border-0 bg-transparent appearance-none leading-none align-middle text-slate-300 hover:text-slate-400" data-base-class="workflow-indicator-btn text-xs font-bold tracking-wide whitespace-nowrap transition-all flex-shrink-0 p-0 border-0 bg-transparent appearance-none leading-none align-middle" data-tab-btn="s7" data-active-class="text-pink-600" data-inactive-class="text-slate-300 hover:text-slate-400">IMPROVE</button>
 
-                    <!-- 프롬프트 설계(PROMPT) 단계에서만 노출되는 3단계 고도화 탭 -->
                     <div id="prompt-stage-tabs" class="hidden items-center gap-2 flex-shrink-0 ml-auto pl-4 border-l border-slate-200">
                         <button type="button" class="version-tab-btn px-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition bg-pink-600 text-white shadow-sm" data-base-class="version-tab-btn px-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition" data-version-tab-btn="p1" data-active-class="bg-pink-600 text-white shadow-sm" data-inactive-class="bg-white text-slate-500 border border-slate-200 hover:bg-slate-100">Context</button>
                         <svg class="w-3 h-3 text-slate-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
@@ -964,7 +911,6 @@ export default AIWorkflow;</div>
 
             <div id="workflow-viewport" class="select-none" style="cursor: grab;">
 
-            <!-- Panel: 01 발견 -->
             <div data-tab-panel="s1">
                 <div class="">
                     <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.15fr] gap-6 items-stretch">
@@ -1005,11 +951,9 @@ export default AIWorkflow;</div>
                 </div>
             </div>
 
-            <!-- Panel: 02 기획 -->
             <div data-tab-panel="s2" class="hidden">
                 <div class="">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
-                        <!-- 기획 프레임워크 -->
                         <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 flex flex-col justify-between h-full">
                             <div>
                             <div class="text-xs font-bold text-slate-400 tracking-widest mb-4">기획 프레임워크</div>
@@ -1028,10 +972,8 @@ export default AIWorkflow;</div>
                             <hr class="border-t border-slate-200 my-5">
 
                             <div class="space-y-2">
-                                <!-- 타이틀 -->
                                 <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">AI 브리핑 중심 UX 기획</h4>
                             
-                                <!-- 테두리와 배경을 빼고 간결하게 정렬한 본문 -->
                                 <p class="text-sm text-slate-600 leading-relaxed pl-1">
                                     사용자가 직접 검색하지 않아도, 위치와 기상 상황을 AI가 실시간 분석하여
                                     <span class="font-semibold text-slate-800 underline decoration-pink-200 decoration-2 tracking-wide">
@@ -1044,7 +986,6 @@ export default AIWorkflow;</div>
                         </div>
 
                         <div class="bg-gradient-to-b from-[#FFF0F3] to-white border border-pink-200 rounded-2xl p-6 flex flex-col justify-between shadow-sm h-full">
-                            <!-- 상단: 기획 핵심 가치 -->
                             <div>
                                 <div class="text-xs font-bold text-pink-600 tracking-widest mb-4">기획 핵심 가치</div>
                                 <ul class="space-y-4 text-sm text-gray-700 font-medium">
@@ -1067,7 +1008,6 @@ export default AIWorkflow;</div>
                                 </ul>
                             </div>
 
-                            <!-- 하단: 서비스 핵심 타깃층 (구분선으로 분리) -->
                             <div class="mt-8 pt-6 border-t border-pink-200">
                                 <div class="text-xs font-bold text-pink-600 tracking-widest mb-4">서비스 핵심 타깃</div>
                                 <div class="grid grid-cols-3 gap-3 text-center">
@@ -1094,11 +1034,9 @@ export default AIWorkflow;</div>
                 </div>
             </div>
 
-            <!-- Panel: 03 프롬프트 설계 (상세) -->
             <div data-tab-panel="s3" class="hidden">
                 <div class="">
                     <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] gap-4 items-stretch mb-10">
-                        <!-- MY PROMPT (AI RESPONSE와 동일한 카드 형태, 컬러는 라이트 테마 유지) -->
                         <div class="flex flex-col min-w-0 h-[460px] rounded-2xl overflow-hidden border border-slate-200 bg-slate-50">
                             <div class="bg-slate-100 border-b border-slate-200 px-4 py-2.5 flex items-center justify-between flex-shrink-0">
                                 <h4 class="text-xs font-bold text-slate-500 tracking-wide">MY PROMPT — 내가 작성한 프롬프트</h4>
@@ -1116,7 +1054,6 @@ export default AIWorkflow;</div>
                                 </button>
                             </div>
                             <div class="flex-1 overflow-y-auto code-scrollbar p-5">
-                                <!-- 1단계: 컨텍스트 정의 -->
                                 <div data-version-panel="p1" data-copy-value="[ROLE] 너는 재난 안전 서비스 전문 UI/UX 엔지니어이자 프론트엔드 개발자야.
 
 [OBJECTIVE] 사용자가 위급 상황에서 직관적으로 정보를 파악할 수 있는 홈 화면 아키텍처를 빌드하는 것이 목적이야.
@@ -1139,7 +1076,6 @@ export default AIWorkflow;</div>
 - 안전 카테고리 6개 버튼 배치</p>
                                     </div>
                                 </div>
-                                <!-- 2단계: 제약조건 주입 -->
                                 <div data-version-panel="p2" class="hidden" data-copy-value="[ROLE] 너는 재난 안전 서비스 전문 UI/UX 엔지니어이자 프론트엔드 개발자야.
 
 [OBJECTIVE] 사용자가 위급 상황에서 직관적으로 정보를 파악할 수 있는 홈 화면 아키텍처를 빌드하는 것이 목적이야.
@@ -1164,7 +1100,6 @@ export default AIWorkflow;</div>
 2. 하단: 보조 카테고리 버튼군 그리드</p>
                                     </div>
                                 </div>
-                                <!-- 3단계: 포맷 최적화 -->
                                 <div data-version-panel="p3" class="hidden" data-copy-value="[ROLE] 너는 재난 안전 서비스 전문 UI/UX 엔지니어이자 프론트엔드 개발자야.
 
 [OBJECTIVE] 사용자가 위급 상황에서 직관적으로 정보를 파악할 수 있는 홈 화면 아키텍처를 빌드하는 것이 목적이야.
@@ -1202,10 +1137,8 @@ export default AIWorkflow;</div>
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                         </div>
 
-                        <!-- AI RESPONSE -->
                         <div class="flex flex-col min-w-0 h-[460px]">
                             <div class="flex-1 flex flex-col bg-[#0B0B14] rounded-2xl overflow-hidden border border-[#2A2A38]">
-                                <!-- 1단계 응답: 기본 그리드 (코드 / 미리보기 전환) -->
                                 <div data-version-panel="p1" class="flex-1 min-h-0">
                                     <div class="flex flex-col h-full">
                                         <div class="bg-[#1A1A26] px-4 py-2.5 flex items-center justify-between gap-2 flex-shrink-0">
@@ -1265,7 +1198,6 @@ export default AIWorkflow;</div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- 2단계 응답: 우선순위 반영 (코드 / 미리보기 전환) -->
                                 <div data-version-panel="p2" class="hidden flex-1 min-h-0">
                                     <div class="flex flex-col h-full">
                                         <div class="bg-[#1A1A26] px-4 py-2.5 flex items-center justify-between gap-2 flex-shrink-0">
@@ -1312,7 +1244,6 @@ export default AIWorkflow;</div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- 3단계 응답: 최종 완성 (코드 / 미리보기 전환) -->
                                 <div data-version-panel="p3" class="hidden flex-1 min-h-0">
                                     <div class="flex flex-col h-full">
                                         <div class="bg-[#1A1A26] px-4 py-2.5 flex items-center justify-between gap-2 flex-shrink-0">
@@ -1377,7 +1308,6 @@ export default AIWorkflow;</div>
             <div data-tab-panel="s4" class="hidden">
                 <div class="">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                        <!-- 디자인 철학 & 무드보드 키워드 -->
                         <div class="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col gap-6">
                             <div>
                                 <div class="text-sm font-bold text-slate-800 mb-2">디자인 철학 & 무드보드 키워드</div>
@@ -1407,7 +1337,6 @@ export default AIWorkflow;</div>
                             </div>
                         </div>
 
-                        <!-- final_ui_preview.html 렌더링 목업 -->
                         <div class="flex flex-col bg-[#0B0B14] rounded-2xl overflow-hidden border border-[#2A2A38]">
                             <div class="bg-[#1A1A26] px-4 py-2.5 flex items-center justify-between flex-shrink-0">
                                 <div class="flex items-center gap-2">
@@ -1445,11 +1374,9 @@ export default AIWorkflow;</div>
                 </div>
             </div>
 
-            <!-- Panel: 05 구현 -->
             <div data-tab-panel="s5" class="hidden">
                 <div class="">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch">
-                        <!-- 좌측: 텍스트 길이에 맞춰 자연스러운 높이(auto)로 쌓임 -->
                         <div class="flex flex-col gap-4">
                             <div class="flex flex-col min-w-0 rounded-2xl overflow-hidden border border-[#2A2A38] bg-[#0B0B14]">
                                 <div class="bg-[#1A1A26] px-4 py-2.5 flex items-center justify-between flex-shrink-0">
@@ -1492,7 +1419,6 @@ export default AIWorkflow;</div>
                             </div>
                         </div>
 
-                        <!-- 우측: 좌측 두 카드의 합산 높이에 맞춰 자동으로 스트레치 -->
                         <div class="flex flex-col min-w-0 h-80 lg:h-auto rounded-2xl overflow-hidden border border-[#2A2A38] bg-slate-100">
                             <div class="bg-[#1A1A26] px-4 py-2.5 flex items-center justify-between flex-shrink-0">
                                 <div class="flex items-center gap-2">
@@ -1512,11 +1438,9 @@ export default AIWorkflow;</div>
                 </div>
             </div>
 
-            <!-- Panel: 06 검증 -->
             <div data-tab-panel="s6" class="hidden">
                 <div class="">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch">
-                        <!-- 문제 발견 카드 -->
                         <div class="bg-red-50 border border-red-200 rounded-2xl p-6 flex flex-col gap-4">
                             <div class="flex items-center justify-between">
                                 <span class="inline-flex items-center gap-1.5 text-xs font-bold text-red-500 bg-white border border-red-200 rounded-full px-3 py-1">
@@ -1535,7 +1459,6 @@ export default AIWorkflow;</div>
                             </div>
                         </div>
 
-                        <!-- 디버그 프로세스 카드 -->
                         <div class="flex flex-col bg-[#0B0B14] rounded-2xl overflow-hidden border border-[#2A2A38]">
                             <div class="bg-[#1A1A26] px-4 py-2.5 flex items-center justify-between flex-shrink-0">
                                 <div class="flex items-center gap-2">
@@ -1567,11 +1490,9 @@ export default AIWorkflow;</div>
                 </div>
             </div>
 
-            <!-- Panel: 07 개선 -->
             <div data-tab-panel="s7" class="hidden">
                 <div class="">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 items-stretch">
-                        <!-- BEFORE -->
                         <div class="bg-white border border-slate-200 rounded-2xl p-5">
                             <div class="flex items-center justify-between mb-3">
                                 <span class="text-sm font-bold text-red-500">BEFORE (예외 방어 부재)</span>
@@ -1589,7 +1510,6 @@ export default AIWorkflow;</div>
                             </ul>
                         </div>
 
-                        <!-- AFTER -->
                         <div class="bg-white border border-slate-200 rounded-2xl p-5">
                             <div class="flex items-center justify-between mb-3">
                                 <span class="text-sm font-bold text-pink-600">AFTER (안정성 고도화)</span>
@@ -1608,7 +1528,6 @@ export default AIWorkflow;</div>
                         </div>
                     </div>
 
-                    <!-- MY LEARNING -->
                     <div class="bg-pink-50 border border-pink-200 rounded-2xl p-5">
                         <div class="text-sm font-bold text-pink-600 mb-2">💡 MY LEARNING (인사이트)</div>
                         <p class="text-sm text-slate-700 leading-relaxed italic">"(Edge Case 발견 및 서비스 안정성 고도화) 과정을 통해, 단순히 예쁜 화면만 그리는 것이 아니라 기술적 변수나 예외 상황까지 기획적으로 예측하는 것이 중요함을 배웠습니다. 이를 촘촘하게 방어하는 UI 설계를 직접 구현해 보며, 디자이너의 논리적인 시나리오 구축 능력이 서비스의 실제 안정성과 신뢰도를 완성하는 핵심 역량임을 깊이 깨달았습니다."</p>
@@ -1618,7 +1537,6 @@ export default AIWorkflow;</div>
 
             </div>
 
-                <!-- Footer: ROLE 뱃지 + Pagination Dots -->
                 <div class="flex flex-col sm:flex-row sm:items-center items-stretch justify-between gap-3 mt-6 pt-4 border-t border-slate-100" data-tabs>
                     <div class="flex flex-wrap items-center gap-2">
                         <div class="flex items-center gap-1.5 bg-purple-50 border border-purple-200 rounded-full pl-1 pr-3 py-1">
@@ -1653,9 +1571,7 @@ export default AIWorkflow;</div>
                 <p class="text-lg text-gray-500">정보 과잉으로 인한 선택의 피로를 낮추고, 나에게 꼭 맞춘 일정을 설계해 주는 나만의 여행 큐레이터입니다.</p>
             </div>
 
-            <!-- PROJECT 02: WAYO (Editorial Scroll) -->
             <div class="space-y-6 bg-white p-6 sm:p-8 md:p-12 rounded-[2.5rem] shadow-sm border border-[#F2EAE0] fade-up">
-                <!-- Header + Metrics -->
                 <div>
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                         <div class="lg:col-span-6 space-y-3">
@@ -1695,7 +1611,6 @@ export default AIWorkflow;</div>
                         </div>
                     </div>
 
-                    <!-- DECISION FLOW: 워크플로우 PROCESS 탭과 동일한 스타일 -->
                     <div class="flex items-center gap-1.5 sm:gap-2.5 overflow-x-auto mt-6 mb-6 -mx-6 sm:-mx-8 md:-mx-12 px-6 sm:px-8 md:px-12 py-3 border-t border-b border-slate-100">
                         <span class="text-xs font-bold text-slate-400 tracking-wide flex-shrink-0">DECISION FLOW :</span>
                         <span class="text-xs font-bold tracking-wide whitespace-nowrap flex-shrink-0 text-slate-500">1 PREFERENCE</span>
@@ -1708,12 +1623,9 @@ export default AIWorkflow;</div>
                     </div>
                 </div>
 
-                <!-- Scrollytelling -->
                 <div class="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    <!-- LEFT (모바일 기준) / 데스크톱에서는 우측으로 이동: STICKY MOCKUP -->
                     <div class="lg:col-span-7 lg:sticky lg:top-24 lg:order-2">
                         <div id="wayo-simulator" class="relative bg-slate-950/90 backdrop-blur-md border border-white/10 rounded-3xl shadow-2xl shadow-black/40 overflow-hidden">
-                            <!-- 상단 탭 바: 신호등 + 로고 + Live Simulator 라벨 -->
                             <div class="h-10 bg-slate-900/90 border-b border-white/10 px-4 flex items-center justify-between select-none">
                                 <div class="flex items-center gap-2.5 flex-shrink-0">
                                     <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
@@ -1725,9 +1637,7 @@ export default AIWorkflow;</div>
                                 <div class="text-[10px] text-slate-500 font-mono hidden sm:block flex-shrink-0">AI Model: GPT-4o</div>
                             </div>
 
-                            <!-- 콘텐츠 영역 -->
                             <div class="relative h-80 overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900/50 to-slate-950">
-                                <!-- Scene 1 (0~3초): AI 추천의 한계 포착 -->
                                 <div id="wayo-scene-1" class="wayo-scene absolute inset-0 p-4 flex flex-col justify-between transition-all duration-700 ease-in-out">
                                     <div class="space-y-2">
                                         <div class="flex items-center gap-2 text-[10px] font-semibold text-slate-400">
@@ -1749,7 +1659,6 @@ export default AIWorkflow;</div>
                                     </div>
                                 </div>
 
-                                <!-- Scene 2 (3~6초): 프롬프트 고도화 및 정형화 -->
                                 <div id="wayo-scene-2" class="wayo-scene absolute inset-0 p-4 hidden flex-col justify-between transition-all duration-700 ease-in-out">
                                     <div class="space-y-2">
                                         <div class="flex items-center justify-between text-[10px]">
@@ -1784,7 +1693,6 @@ export default AIWorkflow;</div>
                                     </div>
                                 </div>
 
-                                <!-- Scene 3 (6~9초): 기술 결함 검증 & 2-Step API 피벗 -->
                                 <div id="wayo-scene-3" class="wayo-scene absolute inset-0 p-4 hidden flex-col justify-between transition-all duration-700 ease-in-out">
                                     <div class="space-y-2">
                                         <div class="flex items-center justify-between text-[10px]">
@@ -1816,7 +1724,6 @@ export default AIWorkflow;</div>
                                     </div>
                                 </div>
 
-                                <!-- Scene 4 (9~12초): 인터랙티브 플래닝 가치 증명 -->
                                 <div id="wayo-scene-4" class="wayo-scene absolute inset-0 p-4 hidden flex-col gap-2.5 transition-all duration-700 ease-in-out">
                                     <div class="flex items-center justify-between">
                                         <span class="text-[10px] font-bold text-wayo-yellow">✦ 최종 2-Step 맞춤 추천 카드</span>
@@ -1857,7 +1764,6 @@ export default AIWorkflow;</div>
                                     </div>
                                 </div>
 
-                                <!-- 가상 마우스 커서 -->
                                 <div id="wayo-pointer" class="absolute z-50 pointer-events-none transition-all duration-1000 ease-out" style="top: 72%; left: 68%;">
                                     <div class="relative">
                                         <div id="wayo-pointer-dot" class="w-5 h-5 rounded-full bg-wayo-yellow/90 border-2 border-white shadow-xl flex items-center justify-center transition-transform duration-200">
@@ -1871,7 +1777,6 @@ export default AIWorkflow;</div>
                                 </div>
                             </div>
 
-                            <!-- MacBook Touch Bar 스타일 컨트롤러: 본체 하단에 통합 -->
                             <div class="border-t border-white/10 bg-slate-900/95 px-3 py-2 flex items-center gap-2.5">
                                 <button type="button" id="wayo-play-btn" onclick="toggleWayoPlay()" class="flex items-center justify-center w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all active:scale-95 flex-shrink-0" aria-label="재생/일시정지" title="재생/일시정지">
                                     <svg id="wayo-icon-pause" class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
@@ -1891,7 +1796,6 @@ export default AIWorkflow;</div>
                             </div>
                         </div>
 
-                        <!-- AI ROLE / MY DECISION (시뮬레이터 하단) -->
                         <div class="mt-4 grid grid-cols-2 gap-3">
                             <div class="bg-purple-50/50 border border-purple-100 rounded-2xl p-4">
                                 <span class="text-[10px] font-bold text-purple-600 uppercase tracking-wider block mb-2">🤖 AI ROLE (역할 정의)</span>
@@ -1904,7 +1808,6 @@ export default AIWorkflow;</div>
                         </div>
                     </div>
 
-                    <!-- 데스크톱에서는 좌측으로 이동: SCROLLABLE NARRATIVE 3 STEPS -->
                     <div class="lg:col-span-5 space-y-6 py-2 lg:order-1">
                         <div id="wayo-step-1" onclick="wayoManualStepSelect(1)" class="wayo-story-step bg-white p-6 rounded-3xl border-2 border-wayo-yellow space-y-3 cursor-pointer transition-all shadow-md" data-step="1">
                             <div class="flex items-center gap-3">
@@ -1966,7 +1869,6 @@ export default AIWorkflow;</div>
                     </div>
                 </div>
 
-                <!-- RESULT 요약 스트립 (WAYO 카드 마지막) -->
                 <div class="mt-10 pt-6 border-t border-gray-200 flex items-center justify-between gap-2 flex-wrap">
                         <button type="button" class="video-lightbox-trigger text-sm font-bold text-gray-400 hover:text-wayo-yellow transition-colors flex-shrink-0" data-src="../assets/WAYO/WAYO.mp4" data-caption="WAYO 실제 작동 화면">🎥 실제 작동 화면</button>
                         <span class="flex items-center gap-2 flex-wrap">
@@ -1977,7 +1879,6 @@ export default AIWorkflow;</div>
                 </div>
             </div>
 
-            <!-- More Works 폴더 트리거: WAYO 섹션 하단, 좌측 정렬 -->
             <div class="mt-6">
                 <button type="button" id="moreworks-trigger" class="group flex items-center gap-2.5">
                     <span class="text-xl leading-none transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-105 group-active:scale-95">📁</span>
@@ -1992,7 +1893,6 @@ export default AIWorkflow;</div>
 
     <div id="moreworks-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/40 backdrop-blur-sm p-4">
         <div id="moreworks-window" class="w-full max-w-3xl bg-white rounded-2xl shadow-2xl shadow-black/40 border border-gray-200/80 overflow-hidden transform transition-all duration-300 ease-out scale-95 opacity-0">
-            <!-- 폴더 창 상단 타이틀 바 -->
             <div class="h-11 bg-gradient-to-b from-gray-100 to-gray-200 border-b border-gray-300 flex items-center justify-between px-4 select-none">
                 <div class="flex items-center gap-3 min-w-0">
                     <div class="flex items-center gap-2 flex-shrink-0">
@@ -2006,13 +1906,11 @@ export default AIWorkflow;</div>
                         <span>📁</span> / Portfolio / MORE_WORKS
                     </div>
                 </div>
-                <span class="text-xs font-medium text-gray-400 flex-shrink-0">총 3개 항목</span>
+                <span class="text-xs font-medium text-gray-400 flex-shrink-0">총 5개 항목</span>
             </div>
 
-            <!-- 폴더 창 바디: 파일 아이콘 그리드 -->
             <div class="bg-gray-50/80 p-6 sm:p-10">
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8">
-                    <!-- File 1: HANA TOUR -->
                     <button type="button" onclick="openMoreworksDetail(1)" onmouseenter="setMoreworksSelected('HANA TOUR')" class="moreworks-file group flex flex-col items-center gap-2 p-3 rounded-2xl hover:bg-white transition-colors cursor-pointer">
                         <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white border-2 border-pink-300 flex items-center justify-center text-3xl sm:text-4xl shadow-sm group-hover:-translate-y-1 group-hover:shadow-md transition-all">🧳</div>
                         <span class="text-xs font-bold text-gray-800 text-center mt-1">HANA TOUR</span>
@@ -2020,7 +1918,6 @@ export default AIWorkflow;</div>
                         <span class="text-[9px] font-bold text-pink-600 bg-pink-50 border border-pink-100 rounded-full px-2 py-0.5 mt-1">2-Week Sprint Project</span>
                     </button>
 
-                    <!-- File 2: 숙박 예약 페이지 -->
                     <button type="button" onclick="openMoreworksDetail(2)" onmouseenter="setMoreworksSelected('숙박 예약 페이지 UI')" class="moreworks-file group flex flex-col items-center gap-2 p-3 rounded-2xl hover:bg-white transition-colors cursor-pointer">
                         <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white border-2 border-pink-300 flex items-center justify-center text-3xl sm:text-4xl shadow-sm group-hover:-translate-y-1 group-hover:shadow-md transition-all">🏨</div>
                         <span class="text-xs font-bold text-gray-800 text-center mt-1">숙박 예약 페이지 UI</span>
@@ -2028,17 +1925,31 @@ export default AIWorkflow;</div>
                         <span class="text-[9px] font-bold text-pink-600 bg-pink-50 border border-pink-100 rounded-full px-2 py-0.5 mt-1">Toy Project</span>
                     </button>
 
-                    <!-- File 3: 추억의 일기장 -->
                     <button type="button" onclick="openMoreworksDetail(3)" onmouseenter="setMoreworksSelected('추억의 일기장')" class="moreworks-file group flex flex-col items-center gap-2 p-3 rounded-2xl hover:bg-white transition-colors cursor-pointer">
                         <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white border-2 border-pink-300 flex items-center justify-center text-3xl sm:text-4xl shadow-sm group-hover:-translate-y-1 group-hover:shadow-md transition-all">📔</div>
                         <span class="text-xs font-bold text-gray-800 text-center mt-1">추억의 일기장</span>
                         <span class="text-[10px] text-gray-400 text-center leading-tight">레거시 UI 재현 · 파티클 애니메이션</span>
                         <span class="text-[9px] font-bold text-pink-600 bg-pink-50 border border-pink-100 rounded-full px-2 py-0.5 mt-1">Daily Assignment</span>
                     </button>
+
+                    <!-- File 4: FINANCE_DESK -->
+                    <button type="button" onclick="openMoreworksDetail(4)" onmouseenter="setMoreworksSelected('FINANCE_DESK')" class="moreworks-file group flex flex-col items-center gap-2 p-3 rounded-2xl hover:bg-white transition-colors cursor-pointer">
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white border-2 border-pink-300 flex items-center justify-center text-3xl sm:text-4xl shadow-sm group-hover:-translate-y-1 group-hover:shadow-md transition-all">💰</div>
+                        <span class="text-xs font-bold text-gray-800 text-center mt-1">FINANCE_DESK</span>
+                        <span class="text-[10px] text-gray-400 text-center leading-tight">재경관리 시스템</span>
+                        <span class="text-[9px] font-bold text-pink-600 bg-pink-50 border border-pink-100 rounded-full px-2 py-0.5 mt-1">Solo Project</span>
+                    </button>
+
+                    <!-- File 5: HR_ASSISTANT -->
+                    <button type="button" onclick="openMoreworksDetail(5)" onmouseenter="setMoreworksSelected('HR_ASSISTANT')" class="moreworks-file group flex flex-col items-center gap-2 p-3 rounded-2xl hover:bg-white transition-colors cursor-pointer">
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white border-2 border-pink-300 flex items-center justify-center text-3xl sm:text-4xl shadow-sm group-hover:-translate-y-1 group-hover:shadow-md transition-all">🧑‍💼</div>
+                        <span class="text-xs font-bold text-gray-800 text-center mt-1">HR_ASSISTANT</span>
+                        <span class="text-[10px] text-gray-400 text-center leading-tight">AI 인사총무 어시스턴트</span>
+                        <span class="text-[9px] font-bold text-pink-600 bg-pink-50 border border-pink-100 rounded-full px-2 py-0.5 mt-1">AI Assistant Concept</span>
+                    </button>
                 </div>
             </div>
 
-            <!-- 폴더 창 하단 상태 바 (Finder 느낌) -->
             <div class="h-8 bg-gray-100 border-t border-gray-200 flex items-center justify-between px-4 text-[10px] text-gray-400 font-medium">
                 <span id="moreworks-selected-doc">선택된 문서: -</span>
                 <span>클릭하여 기획 상세 내용 확인</span>
@@ -2046,10 +1957,8 @@ export default AIWorkflow;</div>
         </div>
     </div>
 
-    <!-- More Works 상세보기 모달 (자세히 보기) -->
     <div id="moreworks-detail-modal" class="fixed inset-0 z-[110] hidden items-center justify-center bg-black/50 backdrop-blur-sm p-4">
         <div id="moreworks-detail-window" class="w-full max-w-lg bg-white rounded-2xl shadow-2xl shadow-black/40 border border-gray-200/80 overflow-hidden transform transition-all duration-300 ease-out scale-95 opacity-0">
-            <!-- 타이틀 바 -->
             <div class="h-11 bg-gradient-to-b from-gray-100 to-gray-200 border-b border-gray-300 flex items-center justify-between px-4 select-none flex-shrink-0">
                 <span class="text-xs font-semibold text-gray-600 flex items-center gap-1 min-w-0 truncate">
                     <span class="flex-shrink-0">📄</span> 속성 정보 : <span id="moreworks-detail-filename" class="font-bold text-gray-800 truncate"></span>
@@ -2059,13 +1968,11 @@ export default AIWorkflow;</div>
                 </button>
             </div>
 
-            <!-- 탭 -->
             <div class="flex border-b border-gray-200 flex-shrink-0">
                 <button type="button" id="moreworks-tab-btn-1" onclick="switchMoreworksTab(1)" class="flex-1 py-3 text-xs font-bold text-center border-b-2 transition-colors text-pink-600 border-pink-500">개요 &amp; 메타정보</button>
                 <button type="button" id="moreworks-tab-btn-2" onclick="switchMoreworksTab(2)" class="flex-1 py-3 text-xs font-bold text-center border-b-2 transition-colors text-gray-400 border-transparent">기획 핵심 &amp; 배운점</button>
             </div>
 
-            <!-- 탭1: 개요 & 메타정보 -->
             <div id="moreworks-tab-content-1" class="moreworks-tab-content">
                 <div id="moreworks-detail-image" class="relative w-full aspect-[16/10] flex items-center justify-center overflow-hidden bg-gradient-to-tr from-pink-100 to-pink-50">
                     <div id="moreworks-detail-star-layer" class="star-container hidden"></div>
@@ -2077,10 +1984,12 @@ export default AIWorkflow;</div>
                     <div class="text-xs text-gray-500 pt-3 border-t border-gray-100">
                         <span class="font-bold text-gray-700">구분:</span> <span id="moreworks-detail-category"></span>
                     </div>
+                    <a id="moreworks-detail-link" href="#" target="_blank" rel="noopener noreferrer" class="hidden items-center gap-1.5 text-xs font-bold text-pink-600 hover:text-pink-700 transition-colors w-fit">
+                        🔗 배포 사이트 바로가기
+                    </a>
                 </div>
             </div>
 
-            <!-- 탭2: 기획 핵심 & 배운점 -->
             <div id="moreworks-tab-content-2" class="moreworks-tab-content hidden p-5 flex flex-col gap-5">
                 <div>
                     <div class="text-xs font-bold text-pink-600 uppercase tracking-wider mb-2">💡 주요 해결 방식</div>
@@ -2101,11 +2010,9 @@ export default AIWorkflow;</div>
                 <p class="text-lg text-gray-500">익숙한 경험에 새로운 기술을 더하는 사람입니다.</p>
             </div>
 
-            <!-- Main Card Container -->
             <div class="bg-white rounded-3xl border border-gray-200/80 shadow-xl shadow-gray-200/50 p-6 lg:p-8 fade-up">
                 <div class="flex flex-col lg:flex-row gap-8">
 
-                    <!-- Left Sidebar (Tabs) -->
                     <div class="w-full lg:w-72 flex-shrink-0 flex flex-col gap-3">
                         <button id="skill-tab-btn-1" onclick="switchSkillTab(1)"
                                 class="skill-tab-btn flex items-center gap-3 w-full px-4 py-3.5 rounded-2xl border text-left font-semibold text-sm transition-all duration-200 bg-pink-50/50 border-pink-100 text-pink-600 shadow-sm">
@@ -2135,10 +2042,8 @@ export default AIWorkflow;</div>
                         </button>
                     </div>
 
-                    <!-- Right Main Panel -->
                     <div class="flex-1 min-w-0 flex flex-col gap-6 relative">
 
-                        <!-- ================= TAB 1: PROMPT ENGINEERING ================= -->
                         <div id="skill-tab-content-1" class="skill-tab-content flex flex-col gap-6">
                             <div class="bg-gradient-to-br from-pink-50/50 to-rose-50/50 border border-pink-100 rounded-2xl p-5">
                                 <div class="text-xs font-bold text-pink-600 tracking-widest mb-2">💡 핵심 미션 — PoC 기반 서비스 기획 및 AI 고속 시각화</div>
@@ -2180,7 +2085,6 @@ export default AIWorkflow;</div>
                             </div>
                         </div>
 
-                        <!-- ================= TAB 2: AI 활용 및 검수·제어 ================= -->
                         <div id="skill-tab-content-2" class="skill-tab-content hidden flex flex-col gap-6">
                             <div class="bg-gradient-to-br from-pink-50/50 to-rose-50/50 border border-pink-100 rounded-2xl p-5">
                                 <div class="text-xs font-bold text-pink-600 tracking-widest mb-2">🗂️ 핵심 미션 — 정교한 프롬프트 설계 및 코드 검수</div>
@@ -2254,7 +2158,6 @@ export default AIWorkflow;</div>
                             </div>
                         </div>
 
-                        <!-- ================= TAB 3: 화면 개발 ================= -->
                         <div id="skill-tab-content-3" class="skill-tab-content hidden flex flex-col gap-6">
                             <div class="bg-gradient-to-br from-pink-50/50 to-rose-50/50 border border-pink-100 rounded-2xl p-5">
                                 <div class="text-xs font-bold text-pink-600 tracking-widest mb-2">🧩 핵심 미션 — 디자인과 AI를 잇는 컴포넌트 기반 웹 구현</div>
@@ -2314,9 +2217,7 @@ export default AIWorkflow;</div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
 
-                <!-- 좌측: 프로필 카드 (Mac 창 스타일, 핑크 = 나) -->
                 <div class="bg-pink-50/40 rounded-2xl overflow-hidden border border-pink-200 shadow-2xl flex flex-col h-full">
-                    <!-- 타이틀 바: 신호등 대신 아이콘+라벨 -->
                     <div class="h-11 bg-pink-100/70 border-b border-pink-200 flex items-center justify-between px-4 gap-3 flex-shrink-0">
                         <div class="flex items-center gap-1.5 bg-white px-3 py-1 rounded-lg border border-pink-200 text-xs font-semibold text-gray-600">
                             <i class="fa-solid fa-user-gear text-pink-500 text-[11px]"></i>
@@ -2325,7 +2226,6 @@ export default AIWorkflow;</div>
                         <span class="text-[10px] font-bold text-pink-600 bg-white border border-pink-200 rounded-full px-2 py-0.5 flex-shrink-0">Available for Hire</span>
                     </div>
 
-                    <!-- 바디 -->
                     <div class="p-6 pb-5 flex flex-col flex-1 bg-white">
                         <div id="contact-left-topzone" class="flex flex-col">
                         <div class="flex items-center gap-4 mb-4">
@@ -2347,7 +2247,6 @@ export default AIWorkflow;</div>
 
                         <div class="pt-2 pb-3 mb-4 border-b border-pink-100" id="contact-left-divider"></div>
 
-                        <!-- 하단 영역: 이메일 / GitHub (남는 세로 공간을 자연스럽게 흡수) -->
                         <div class="flex-1 flex flex-col justify-between gap-3">
                             <div class="flex items-center justify-between gap-2 bg-pink-50/70 border border-pink-200 rounded-xl px-4 py-3.5">
                                 <span id="contact-email-text" class="text-base text-gray-800 truncate">hana021013@gmail.com</span>
@@ -2364,9 +2263,7 @@ export default AIWorkflow;</div>
                     </div>
                 </div>
 
-                <!-- 우측: AI Mini Agent 데모 카드 (Mac 창 스타일) -->
                 <div class="bg-purple-50/40 rounded-2xl overflow-hidden border border-purple-200 shadow-2xl flex flex-col h-full">
-                    <!-- 타이틀 바 -->
                     <div class="h-11 bg-purple-100/70 border-b border-purple-200 flex items-center justify-between px-4 gap-3 flex-shrink-0">
                         <div class="flex items-center gap-3 min-w-0">
                             <div class="flex items-center gap-1.5 bg-white px-3 py-1 rounded-lg border border-purple-200 text-xs font-semibold text-gray-600 truncate">
@@ -2377,7 +2274,6 @@ export default AIWorkflow;</div>
                         <span class="text-[10px] font-bold text-purple-600 bg-white border border-purple-200 rounded-full px-2 py-0.5 flex-shrink-0">Interactive Demo</span>
                     </div>
 
-                    <!-- 바디 -->
                     <div class="p-6 pb-5 flex flex-col flex-1 bg-white">
                         <div id="contact-right-topzone" class="flex flex-col gap-3">
                         <div class="flex items-center gap-1.5">
@@ -2396,7 +2292,6 @@ export default AIWorkflow;</div>
 
                         <div class="pt-2 pb-3 mb-4 border-b border-purple-100" id="contact-right-divider"></div>
 
-                        <!-- 답변 박스: 내용 길이에 맞춰 자연스럽게 (flex-col로 리스트 깨짐 방지) -->
                         <div id="mini-agent-answer-box" class="flex-1 bg-purple-50/50 border border-purple-100 rounded-xl p-5 text-sm text-gray-400 leading-relaxed flex flex-col justify-center">
                             위 프롬프트 버튼을 누르면 AI Agent 답변을 미리 볼 수 있습니다.
                         </div>
@@ -2422,8 +2317,6 @@ export default AIWorkflow;</div>
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
-                        // 한번 보여진 후에는 observer 해제하고 싶다면 아래 주석 해제
-                        // observer.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
@@ -2442,7 +2335,6 @@ export default AIWorkflow;</div>
             moreworksModal.classList.remove('hidden');
             moreworksModal.classList.add('flex');
             document.body.style.overflow = 'hidden';
-            // 강제 리플로우 후 트랜지션 시작 (뿅 하고 나타나는 모션)
             requestAnimationFrame(() => {
                 requestAnimationFrame(() => {
                     moreworksWindow.classList.remove('scale-95', 'opacity-0');
@@ -2521,6 +2413,39 @@ export default AIWorkflow;</div>
                 ],
                 learning: '레거시 브라우저 UI를 픽셀 단위로 재현하며 CSS 세부 제어력을 길렀고, 순수 CSS/JS만으로 인터랙션을 만드는 재미를 느꼈습니다.',
                 sparkle: true
+            },
+            4: {
+                filename: 'finance_desk',
+                title: 'FINANCE_DESK',
+                emoji: '💰',
+                video: '',
+                link: 'https://mylogspace.github.io/FINANCE_DESK/',
+                summary: '로그인부터 대시보드, 급여대장, 지급결의서, 법인카드 대사, 예산 관리까지 — 중소기업 재경팀의 월간 업무 흐름을 하나의 웹 앱으로 구현한 재경관리 시스템입니다.',
+                category: 'Solo Project',
+                points: [
+                    '사원마스터 · 근태 · 4대보험 요율을 연동해 급여대장을 자동 계산하는 구조 설계',
+                    '법인카드 사용내역(CSV)을 가맹점 키워드 기반으로 자동 계정과목 분류',
+                    '세금계산서 ↔ 법인카드 사용내역을 자동 대사(matching)하고, 업무관련성 체크로 매입세액 불공제 항목을 분리 처리',
+                    '계정과목별 예산 대비 실적을 급여 · 지급결의서 · 법인카드 데이터에서 자동 집계'
+                ],
+                learning: '실무 경력을 바탕으로 급여·법인카드·세금계산서 흐름을 설계했지만, 아직 데모 단계라 실제 데이터로 검증해보지 못한 게 가장 아쉬운 부분입니다. 계산 로직과 자동 분류 규칙이 실제 업무 케이스에서도 잘 맞는지는 앞으로 검증하고 싶습니다.',
+                sparkle: false
+            },
+            5: {
+                filename: 'hr_assistant',
+                title: 'HR_ASSISTANT',
+                emoji: '🧑\u200d💼',
+                video: '',
+                link: 'https://mylogspace.github.io/HR_ASSISTANT/',
+                summary: '근태 · 연차 관리부터 급여, 퇴직금, 인사평가, 퇴사 위험도 예측, 사내규정 FAQ 챗봇까지 아우르는 AI 기반 인사총무 어시스턴트 컨셉입니다.',
+                category: 'AI Assistant Concept',
+                points: [
+                    '근속연수 · 야근시간 증감 · 연차 사용률 · 최근 평가등급 변화를 입력받아 퇴사 위험도를 점수화하는 시뮬레이터 구현',
+                    '인사평가 등급 체계와 퇴사 위험도 예측 로직의 평가 기준을 통일해 데이터 일관성 확보',
+                    '자산 · 비품 관리를 근태 탭 임직원 명단과 매칭해 사용자 자동 표시'
+                ],
+                learning: '실전 검증 전 단계이고, 특히 사내규정 FAQ 챗봇을 실제 API 연동 없이 키워드 매칭 방식으로만 구현한 점이 아쉽습니다. 실제 자연어 이해가 아닌 만큼 다양한 질문 표현에 대응하기엔 한계가 있어서, 추후 LLM 연동으로 개선하고 싶습니다.',
+                sparkle: false
             }
         };
 
@@ -2579,12 +2504,19 @@ export default AIWorkflow;</div>
 
             const videoEl = document.getElementById('moreworks-detail-video');
             const emojiEl = document.getElementById('moreworks-detail-emoji');
-            videoEl.style.display = '';
-            videoEl.src = d.video;
-            videoEl.load();
-            videoEl.play().catch(() => {});
             emojiEl.textContent = d.emoji;
-            emojiEl.style.display = 'none';
+            if (d.video) {
+                videoEl.style.display = '';
+                videoEl.src = d.video;
+                videoEl.load();
+                videoEl.play().catch(() => {});
+                emojiEl.style.display = 'none';
+            } else {
+                videoEl.pause();
+                videoEl.removeAttribute('src');
+                videoEl.style.display = 'none';
+                emojiEl.style.display = 'flex';
+            }
 
             const pointsEl = document.getElementById('moreworks-detail-points');
             pointsEl.innerHTML = '';
@@ -2595,6 +2527,16 @@ export default AIWorkflow;</div>
                 pointsEl.appendChild(li);
             });
             document.getElementById('moreworks-detail-learning').textContent = d.learning;
+
+            const linkEl = document.getElementById('moreworks-detail-link');
+            if (d.link) {
+                linkEl.href = d.link;
+                linkEl.classList.remove('hidden');
+                linkEl.classList.add('flex');
+            } else {
+                linkEl.classList.add('hidden');
+                linkEl.classList.remove('flex');
+            }
 
             const starLayer = document.getElementById('moreworks-detail-star-layer');
             if (d.sparkle) {
@@ -2652,7 +2594,6 @@ export default AIWorkflow;</div>
             }
         });
 
-        // Nav Link Active State (클릭 시 + 스크롤 시 모두 라임 컬러 반영)
         const navLinks = document.querySelectorAll('#navbar .nav-link');
         navLinks.forEach((link) => {
             link.addEventListener('click', () => {
@@ -2661,7 +2602,6 @@ export default AIWorkflow;</div>
             });
         });
 
-        // 스크롤 시 현재 보이는 섹션에 맞춰 메뉴 자동 하이라이트 (스크롤 스파이)
         const sectionIds = ['ola', 'ai-frontend', 'wayo', 'skills', 'contact'];
         const sections = sectionIds
             .map((id) => document.getElementById(id))
@@ -2678,7 +2618,6 @@ export default AIWorkflow;</div>
                 }
             });
 
-            // 추적 중인 섹션이 하나도 화면에 없으면(예: 맨 위 커버로 돌아간 경우) 활성 표시를 모두 해제
             const anyIntersecting = sections.some((sec) => {
                 const rect = sec.getBoundingClientRect();
                 const vh = window.innerHeight;
@@ -2691,7 +2630,6 @@ export default AIWorkflow;</div>
 
         sections.forEach((section) => sectionObserver.observe(section));
 
-        // 프롬프트 복사 버튼
         document.querySelectorAll('.copy-prompt-btn').forEach((btn) => {
             btn.addEventListener('click', async () => {
                 const text = btn.getAttribute('data-copy-text') || '';
@@ -2709,7 +2647,6 @@ export default AIWorkflow;</div>
             });
         });
 
-        // Tabs (프로젝트 카드 탭 + AI 워크플로우 스텝 탭 공용)
         document.querySelectorAll('[data-tabs]').forEach((tabGroup) => {
             const buttons = tabGroup.querySelectorAll('[data-tab-btn]');
             const panelContainer = tabGroup.parentElement;
@@ -2732,7 +2669,6 @@ export default AIWorkflow;</div>
             });
         });
 
-        // 프롬프트 고도화 버전 선택 탭 (1단계 컨텍스트 정의 → 2단계 제약조건 주입 → 3단계 포맷 최적화)
         document.querySelectorAll('[data-version-tabs]').forEach((tabGroup) => {
             const buttons = tabGroup.querySelectorAll('[data-version-tab-btn]');
             const panelContainer = tabGroup.parentElement;
@@ -2759,7 +2695,6 @@ export default AIWorkflow;</div>
             });
         });
 
-        // 3단계 응답 카드의 코드 / 미리보기 전환 탭
         document.querySelectorAll('[data-code-preview-tabs]').forEach((tabGroup) => {
             const scope = tabGroup.closest('[data-version-panel]');
             if (!scope) return;
@@ -2782,12 +2717,9 @@ export default AIWorkflow;</div>
             });
         });
 
-        // ===== AI WORKFLOW 슬라이드 컨트롤 (화살표 / 키보드 / 드래그·스와이프) =====
         (function () {
             const stepOrder = ['s1', 's2', 's3', 's4', 's5', 's6', 's7'];
 
-            // [서하나_7step_v1.0 반영] 스텝별 헤더 텍스트(제목/설명/하단 전체단계명)
-            // 실제 콘텐츠(카드 내부)는 그대로 두고, 이 메타 정보만 공용 헤더에 주입합니다.
             const WORKFLOW_META = {
                 s1: { title: '문제 정의', sub: 'Problem Definition', desc: '기술보다 사용자의 문제와 불편을 정의합니다.', footer: '01. DISCOVER (문제 정의)', aiRole: 'Analyze · 정보 탐색/정리', myRole: 'Define · 핵심 문제 정의' },
                 s2: { title: '기획', sub: 'Service Strategy', desc: 'AI에게 아이디어를 받는 것이 목적이 아니라, 서비스에 필요한 것만 선택합니다.', footer: '02. PLAN (서비스 구조 결정)', aiRole: 'Suggest · 아이디어 제안', myRole: 'Define · 서비스 구조 결정' },
@@ -2840,7 +2772,6 @@ export default AIWorkflow;</div>
                     if (myRoleText) myRoleText.textContent = meta.myRole;
                 }
 
-                // 7단계 가로 인디케이터: 현재 단계만 브랜드 컬러 + 밑줄로 활성화, 나머지는 회색 톤다운
                 document.querySelectorAll('.workflow-indicator-btn').forEach((btn) => {
                     const isActive = btn.getAttribute('data-tab-btn') === id;
                     const stateClass = isActive ? btn.getAttribute('data-active-class') : btn.getAttribute('data-inactive-class');
@@ -2849,7 +2780,6 @@ export default AIWorkflow;</div>
                     btn.classList.toggle('is-active', isActive);
                 });
 
-                // 프롬프트 설계(PROMPT) 단계일 때만 3단계 고도화 탭을 인디케이터 우측 끝에 노출
                 const promptStageTabs = document.getElementById('prompt-stage-tabs');
                 if (promptStageTabs) {
                     const showTabs = id === 's3';
@@ -2861,27 +2791,22 @@ export default AIWorkflow;</div>
             function next() { goToStep(getCurrentIndex() + 1); }
             function prev() { goToStep(getCurrentIndex() - 1); }
 
-            // 점(dot) 클릭 시에도 카운터/화살표 상태 동기화
             document.querySelectorAll('.workflow-dot').forEach((dot) => {
                 dot.addEventListener('click', updateWorkflowNavUI);
             });
 
-            // 7단계 가로 인디케이터 클릭 시에도 헤더/카운터/역할뱃지 상태 동기화
             document.querySelectorAll('.workflow-indicator-btn').forEach((btn) => {
                 btn.addEventListener('click', updateWorkflowNavUI);
             });
 
-            // 화살표 버튼 (패널마다 하나씩 있지만 동작은 동일)
             prevBtns.forEach((btn) => btn.addEventListener('click', prev));
             nextBtns.forEach((btn) => btn.addEventListener('click', next));
 
-            // 키보드 좌우 방향키
             window.addEventListener('keydown', (e) => {
                 if (e.key === 'ArrowRight') next();
                 if (e.key === 'ArrowLeft') prev();
             });
 
-            // 마우스 드래그 / 스와이프
             let isDragging = false;
             let startX = 0;
             let currentDeltaX = 0;
@@ -2949,11 +2874,9 @@ export default AIWorkflow;</div>
                 document.body.style.userSelect = '';
             });
 
-            // 초기 상태 반영
             updateWorkflowNavUI();
         })();
 
-        // ===== OLA 스티키 목업: 9초 무한 루프 시뮬레이터 (재생/일시정지 + 진행바 + 스텝 선택) =====
         const OLA_LOOP_DURATION = 12000;
         const OLA_TICK = 100;
         const OLA_CURSOR_POS = {
@@ -3022,7 +2945,6 @@ export default AIWorkflow;</div>
             cursor.style.top = pos.top + '%';
             if (cursorStepText) cursorStepText.textContent = `Step 0${stepNum}`;
             if (cursorLabel) {
-                // 커서가 우측에 가까우면 라벨이 잘리지 않도록 좌측으로 뒤집어 표시
                 const flipToLeft = pos.left > 55;
                 cursorLabel.classList.toggle('left-6', !flipToLeft);
                 cursorLabel.classList.toggle('right-6', flipToLeft);
@@ -3067,7 +2989,6 @@ export default AIWorkflow;</div>
             }
 
             if (stepNum === 1) {
-                // 안전지도: 마커 핀 순차 등장(빠르게) → 지역 카드 순차 등장
                 document.querySelectorAll('.ola-map-pin').forEach((el, i) => {
                     el.classList.remove('is-in');
                     olaSceneTimers.push(setTimeout(() => el.classList.add('is-in'), 150 + i * 110));
@@ -3077,7 +2998,6 @@ export default AIWorkflow;</div>
                     olaSceneTimers.push(setTimeout(() => el.classList.add('is-in'), 1050 + i * 200));
                 });
             } else if (stepNum === 2) {
-                // 커뮤니티톡: 새로고침 아이콘 회전 → 채팅 메시지 순차 등장
                 const refreshIcon = document.getElementById('ola-refresh-icon');
                 if (refreshIcon) {
                     refreshIcon.classList.remove('is-spinning');
@@ -3088,12 +3008,10 @@ export default AIWorkflow;</div>
                     olaSceneTimers.push(setTimeout(() => el.classList.add('is-in'), 500 + i * 500));
                 });
             } else if (stepNum === 3) {
-                // 다국어 기능: KR → EN → CN 자동 전환
                 setOlaLang('KR');
                 olaSceneTimers.push(setTimeout(() => setOlaLang('EN'), 1200));
                 olaSceneTimers.push(setTimeout(() => setOlaLang('CN'), 2300));
             } else if (stepNum === 4) {
-                // 생명지수: 게이지 등장 → 위험도 타일 순차 등장
                 const gaugeEl = document.querySelector('#ola-scene-4 .rounded-2xl');
                 if (gaugeEl) {
                     gaugeEl.style.opacity = '0';
@@ -3147,13 +3065,11 @@ export default AIWorkflow;</div>
             activateOlaStep(stepNum);
         }
 
-        // 최초 진입 시 1번 스텝부터 자동 재생 시작
         activateOlaStep(1);
         updateOlaProgressUI();
         updateOlaPlayButtonUI();
         startOlaTimer();
 
-        // ===== WAYO 스티키 목업: 12초 무한 루프 시뮬레이터 (재생/일시정지 + 진행바 + 스텝 선택) =====
         const WAYO_LOOP_DURATION = 12000;
         const WAYO_TICK = 100;
         const WAYO_CURSOR_POS = {
@@ -3222,7 +3138,6 @@ export default AIWorkflow;</div>
             cursor.style.top = pos.top + '%';
             if (cursorStepText) cursorStepText.textContent = `Step 0${stepNum}`;
             if (cursorLabel) {
-                // 커서가 우측에 가까우면 라벨이 잘리지 않도록 좌측으로 뒤집어 표시
                 const flipToLeft = pos.left > 55;
                 cursorLabel.classList.toggle('left-6', !flipToLeft);
                 cursorLabel.classList.toggle('right-6', flipToLeft);
@@ -3279,7 +3194,6 @@ export default AIWorkflow;</div>
                 if (modal) modal.classList.remove('is-in');
                 wayoSceneTimers.push(setTimeout(() => { if (modal) modal.classList.add('is-in'); }, 800));
             } else if (stepNum === 4) {
-                // 1.2초 ~ 2.2초 지점에서 클릭 시뮬레이션 (원본 스펙과 동일한 타이밍)
                 wayoSceneTimers.push(setTimeout(() => {
                     if (dot) dot.classList.add('scale-75');
                     if (ripple) ripple.classList.remove('hidden');
@@ -3324,7 +3238,6 @@ export default AIWorkflow;</div>
             activateWayoStep(stepNum);
         }
 
-        // Step 4 목업 카드 클릭 시 일정 갱신
         document.querySelectorAll('.wayo-mock-card').forEach((mCard, idx) => {
             mCard.addEventListener('click', () => {
                 const cardId = idx + 1;
@@ -3347,13 +3260,11 @@ export default AIWorkflow;</div>
             });
         });
 
-        // 최초 진입 시 1번 스텝부터 자동 재생 시작
         activateWayoStep(1);
         updateWayoProgressUI();
         updateWayoPlayButtonUI();
         startWayoTimer();
 
-        // ===== SKILLS: AI 역량 4탭 (Prompt Engineering / OpenAI API / RAG & LangChain / 실제 활용 사례) =====
         function switchSkillTab(tabIndex) {
             for (let i = 1; i <= 3; i++) {
                 const content = document.getElementById(`skill-tab-content-${i}`);
@@ -3389,7 +3300,6 @@ export default AIWorkflow;</div>
             }, 2000);
         }
 
-        // ===== CONTACT: 이메일 복사 / 문의 카테고리 선택 / 메시지 디스패치 =====
         function copyContactEmail() {
             const emailText = document.getElementById('contact-email-text').innerText;
             navigator.clipboard.writeText(emailText);
@@ -3410,7 +3320,6 @@ export default AIWorkflow;</div>
             window.location.href = `mailto:${targetEmail}?subject=${encodeURIComponent('[포트폴리오 문의]')}`;
         }
 
-        // Contact 좌/우 카드 상단 영역 높이를 실제 렌더링 기준으로 맞춰서 구분선을 정렬
         function equalizeContactTopZones() {
             const left = document.getElementById('contact-left-topzone');
             const right = document.getElementById('contact-right-topzone');
@@ -3433,7 +3342,6 @@ export default AIWorkflow;</div>
             contactResizeTimer = setTimeout(equalizeContactTopZones, 150);
         });
 
-        // AI Mini Agent 데모: 프롬프트 버튼 클릭 시 로딩 → 구조화된 답변 표시
         const MINI_AGENT_ANSWERS = {
             1: `<div class="text-sm font-bold text-purple-600 mb-2">[하나 님의 핵심 강점]</div>
                 <ol class="space-y-1.5 text-sm text-gray-700 leading-relaxed list-decimal list-inside">
@@ -3492,7 +3400,6 @@ export default AIWorkflow;</div>
     </div>
 
     <script>
-        // 이미지 라이트박스
         (function () {
             const modal = document.getElementById('image-lightbox');
             const modalImg = document.getElementById('lightbox-img');
@@ -3529,7 +3436,6 @@ export default AIWorkflow;</div>
             });
         })();
 
-        // 영상 라이트박스 (실제 작동 화면)
         (function () {
             const modal = document.getElementById('video-lightbox');
             const modalVideo = document.getElementById('lightbox-video');
@@ -3581,7 +3487,6 @@ export default AIWorkflow;</div>
     </div>
 
     <script>
-        // 소스 코드 보기 팝업
         (function () {
             const modal = document.getElementById('code-view-modal');
             const frame = document.getElementById('code-view-frame');
