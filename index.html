@@ -3474,7 +3474,55 @@ export default AIWorkflow;</div>
             contactResizeTimer = setTimeout(equalizeContactTopZones, 150);
         });
 
-        </script>
+        // AI Mini Agent 데모: 프롬프트 버튼 클릭 시 로딩 → 구조화된 답변 표시
+        const MINI_AGENT_ANSWERS = {
+            1: `<div class="text-base font-bold text-purple-600 mb-3">[하나 님의 핵심 강점]</div>
+                <ol class="space-y-2.5 text-base text-gray-700 leading-relaxed list-decimal list-inside">
+                    <li>경영지원 실무 문제정의력 + AI 활용역량</li>
+                    <li>기획부터 구현까지 혼자 완결하는 실행력</li>
+                    <li>사용자 흐름을 기준으로 AI 결과물을 판단하고 다듬는 UX 감각</li>
+                </ol>`,
+            2: `<div class="text-base font-bold text-ola-green mb-3">[OLA 프로젝트 역할]</div>
+                <ul class="space-y-2.5 text-base text-gray-700 leading-relaxed">
+                    <li>• <strong class="text-ola-green">팀 구성</strong>: 3인 팀(백엔드 2명) 중 기획·UX/UI·프론트엔드 담당</li>
+                    <li>• <strong class="text-ola-green">AI 기능</strong>: AI 브리핑 카드, 한/영/중 다국어 브리핑, 번역 오류 시 Fallback 처리</li>
+                    <li>• <strong class="text-ola-green">화면 구현</strong>: 안전지도, 커뮤니티톡, 위치 정보 실패 Fallback UI</li>
+                </ul>`,
+            3: `<div class="text-base font-bold text-wayo-yellow mb-3">[WAYO 프로젝트 역할]</div>
+                <ul class="space-y-2.5 text-base text-gray-700 leading-relaxed">
+                    <li>• <strong class="text-wayo-yellow">진행 방식</strong>: 기획부터 프론트엔드 구현까지 1인 개인 프로젝트로 수행</li>
+                    <li>• <strong class="text-wayo-yellow">핵심 흐름</strong>: 취향 입력 → AI 매칭 → 사용자 선택 → 일정 자동 편성</li>
+                    <li>• <strong class="text-wayo-yellow">문제 해결</strong>: AI 응답 JSON 잘림 문제를 2-Step 호출로 나눠 해결</li>
+                </ul>`,
+            4: `<div class="text-base font-bold text-purple-600 mb-3">[핵심 기술 스택]</div>
+                <ul class="space-y-2.5 text-base text-gray-700 leading-relaxed">
+                    <li>• <strong class="text-purple-600">Frontend</strong>: HTML5, CSS3, JavaScript (ES6+), Tailwind CSS</li>
+                    <li>• <strong class="text-purple-600">API 연동</strong>: Kakao Maps API(OLA), OpenAI API(WAYO)</li>
+                    <li>• <strong class="text-purple-600">Generative AI</strong>: 프롬프트 설계, 출력 형식 제어, AI 생성 코드 검수</li>
+                </ul>`
+        };
+
+        function askMiniAgent(id) {
+            const answerBox = document.getElementById('mini-agent-answer-box');
+            for (let i = 1; i <= 2; i++) {
+                const btn = document.getElementById(`mini-agent-btn-${i}`);
+                if (!btn) continue;
+                if (i === id) {
+                    btn.classList.remove('text-gray-600', 'bg-gray-50', 'border-gray-200');
+                    btn.classList.add('text-purple-600', 'bg-purple-50', 'border-purple-300');
+                } else {
+                    btn.classList.remove('text-purple-600', 'bg-purple-50', 'border-purple-300');
+                    btn.classList.add('text-gray-600', 'bg-gray-50', 'border-gray-200');
+                }
+            }
+            if (!answerBox) return;
+            answerBox.innerHTML = '<div class="flex items-center gap-2 text-sm text-gray-400"><span class="inline-block animate-spin">🌀</span> AI가 답변을 생성 중입니다...</div>';
+            setTimeout(() => {
+                answerBox.innerHTML = MINI_AGENT_ANSWERS[id];
+            }, 800);
+        }
+
+    </script>
 
     <!-- 이미지 확대 보기 (라이트박스) -->
     <div id="image-lightbox" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/85 p-4 md:p-10">
