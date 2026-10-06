@@ -109,6 +109,21 @@
         }
 
         /* AI WORKFLOW 스텝 네비게이션: 카드가 아닌 하나의 연결된 흐름 (라이트 테마) */
+        .award-badge{position:relative;display:inline-flex;align-items:center;gap:.45rem;padding:.45rem 1rem;border-radius:9999px;font-size:.82rem;font-weight:800;letter-spacing:.02em;color:#7a4b00;background:linear-gradient(135deg,#FFF3C4 0%,#FFD34D 45%,#FFB300 100%);border:1px solid #F5B300;box-shadow:0 4px 14px rgba(245,179,0,.38),inset 0 1px 0 rgba(255,255,255,.75);overflow:hidden;white-space:nowrap;line-height:1}
+        .award-badge i{color:#B45309}
+        .award-badge::after{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.8),transparent);transform:skewX(-20deg);animation:award-shine 3.2s ease-in-out infinite}
+        @keyframes award-shine{0%,55%{left:-60%}100%{left:130%}}
+
+        .ma-btn{font-size:.9rem;font-weight:600;border-radius:9999px;padding:.65rem 1.2rem;border:1px solid;transition:all .2s ease;cursor:pointer}
+        .ma-btn[data-c="pink"]{color:#be185d;background:#fdf2f8;border-color:#fbcfe8}
+        .ma-btn[data-c="pink"].is-active{color:#fff;background:#ec4899;border-color:#ec4899;box-shadow:0 4px 12px rgba(236,72,153,.3)}
+        .ma-btn[data-c="ola"]{color:#00805f;background:#E6F9F4;border-color:#9fe8d3}
+        .ma-btn[data-c="ola"].is-active{color:#fff;background:#00C896;border-color:#00C896;box-shadow:0 4px 12px rgba(0,200,150,.3)}
+        .ma-btn[data-c="wayo"]{color:#8a5f00;background:#FFF8E6;border-color:#fde29a}
+        .ma-btn[data-c="wayo"].is-active{color:#3b2a00;background:#F5B300;border-color:#F5B300;box-shadow:0 4px 12px rgba(245,179,0,.35)}
+        .ma-btn[data-c="purple"]{color:#6d28d9;background:#f5f3ff;border-color:#ddd6fe}
+        .ma-btn[data-c="purple"].is-active{color:#fff;background:#7c3aed;border-color:#7c3aed;box-shadow:0 4px 12px rgba(124,58,237,.3)}
+
         .step-num { background: #F1F5F9; color: #64748B; transition: background-color .25s, color .25s, transform .25s; }
         .step-title { color: #94A3B8; transition: color .25s; }
         .step-sub { color: #CBD5E1; transition: color .25s; }
@@ -371,8 +386,7 @@
         <div class="relative z-10 max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-16 md:gap-20 w-full">
             <!-- Text Content -->
             <div class="md:w-3/5 text-left order-2 md:order-1">
-                <p class="text-xs text-pink-600 font-bold tracking-wider mb-1 fade-up">AI PRODUCT BUILDER</p>
-                <p class="text-sm text-gray-400 font-medium tracking-wide mb-5 fade-up">Idea → Design → Prototype → Validation</p>
+                <p class="text-xs text-pink-600 font-bold tracking-wider mb-4 fade-up">AI PRODUCT BUILDER</p>
                 <div class="w-10 border-t-2 border-slate-200 mb-5 fade-up"></div>
                 <h1 class="font-extrabold tracking-tighter mb-4 leading-tight fade-up" style="transition-delay: 100ms;">
                     <span class="block text-3xl md:text-4xl text-gray-800">HELLO,</span>
@@ -383,7 +397,7 @@
                     직접 프로토타입까지 만듭니다.
                 </p>
                 <p class="text-sm text-gray-400 font-semibold tracking-wide mb-8 fade-up" style="transition-delay: 250ms;">
-                    Idea → AI → Prototype → Validate
+                    Idea → Design → AI Prototype → Validate
                 </p>
             </div>
             
@@ -561,6 +575,7 @@ export default AIWorkflow;</div>
                                     </span>
                                     <span class="text-ola-green">OLA</span>
                                 </span>
+                                <span class="award-badge"><i class="fa-solid fa-trophy"></i> 공모전 당선작</span>
                             </h3>
                         </div>
                         <div class="lg:col-span-6">
@@ -568,14 +583,14 @@ export default AIWorkflow;</div>
                             <div class="flex items-center gap-2 px-3 py-2.5 bg-slate-50 rounded-xl border border-slate-200">
                                 <span class="text-base flex-shrink-0">🤝</span>
                                 <div class="min-w-0">
-                                    <div class="text-[9px] text-gray-400 font-bold leading-none mb-0.5">협업</div>
-                                    <div class="text-[11px] font-bold text-gray-800 leading-tight truncate">3인 팀·기획디자인 리드</div>
+                                    <div class="text-[9px] text-gray-400 font-bold leading-none mb-0.5">협업(3인팀)</div>
+                                    <div class="text-[11px] font-bold text-gray-800 leading-tight">기획·UX/UI·프론트엔드 구현</div>
                                 </div>
                             </div>
                             <div class="flex items-center gap-2 px-3 py-2.5 bg-slate-50 rounded-xl border border-slate-200">
                                 <span class="text-base flex-shrink-0">🧭</span>
                                 <div class="min-w-0">
-                                    <div class="text-[9px] text-gray-400 font-bold leading-none mb-0.5">서비스 기획</div>
+                                    <div class="text-[9px] text-gray-400 font-bold leading-none mb-0.5">기획 · UX/UI</div>
                                     <div class="text-[11px] font-bold text-gray-800 leading-tight truncate">안전지도·제보·다국어</div>
                                 </div>
                             </div>
@@ -2328,64 +2343,12 @@ export default AIWorkflow;</div>
         <div class="max-w-7xl mx-auto px-6 fade-up">
             <div class="mb-10">
                 <h2 class="text-5xl font-extrabold text-gray-900 mb-4"><span class="text-pink-600">05.</span> CONTACT</h2>
-                <p class="text-gray-500 text-base leading-relaxed">작은 불편함도 놓치지 않고, AI로 더 나은 내일을 만드는 기획자로 함께하고 싶습니다.</p>
+                <p class="text-gray-500 text-base leading-relaxed">작은 불편함도 놓치지 않고, 기획부터 구현까지 AI로 직접 만들어 더 나은 내일을 만드는 빌더로 함께하고 싶습니다.</p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+            <div class="grid grid-cols-1 gap-6 items-stretch">
 
-                <!-- 좌측: 프로필 카드 (Mac 창 스타일, 핑크 = 나) -->
-                <div class="bg-pink-50/40 rounded-2xl overflow-hidden border border-pink-200 shadow-2xl flex flex-col h-full">
-                    <!-- 타이틀 바: 신호등 대신 아이콘+라벨 -->
-                    <div class="h-11 bg-pink-100/70 border-b border-pink-200 flex items-center justify-between px-4 gap-3 flex-shrink-0">
-                        <div class="flex items-center gap-1.5 bg-white px-3 py-1 rounded-lg border border-pink-200 text-xs font-semibold text-gray-600">
-                            <i class="fa-solid fa-user-gear text-pink-500 text-[11px]"></i>
-                            human_profile.exe
-                        </div>
-                        <span class="text-[10px] font-bold text-pink-600 bg-white border border-pink-200 rounded-full px-2 py-0.5 flex-shrink-0">Available for Hire</span>
-                    </div>
-
-                    <!-- 바디 -->
-                    <div class="p-6 pb-5 flex flex-col flex-1 bg-white">
-                        <div id="contact-left-topzone" class="flex flex-col">
-                        <div class="flex items-center gap-4 mb-4">
-                            <div class="relative">
-                                <div class="w-14 h-14 rounded-2xl bg-pink-500 text-white flex items-center justify-center text-xl shadow-md shadow-pink-500/20 shrink-0">
-                                    <i class="fa-solid fa-user-astronaut"></i>
-                                </div>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-extrabold text-gray-900">서하나 <span class="text-sm font-medium text-gray-400">(HANA SEO)</span></h3>
-                                <p class="text-sm font-bold text-pink-600 mt-0.5">AI PRODUCT BUILDER</p>
-                            </div>
-                        </div>
-                        <p class="flex items-center gap-1.5 text-xs font-bold text-gray-400 tracking-wide">
-                            <svg class="w-3.5 h-3.5 text-pink-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.5 7-11.5A7 7 0 0 0 5 9.5C5 14.5 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>
-                            SEOUL, KOREA
-                        </p>
-                        </div>
-
-                        <div class="pt-2 pb-3 mb-4 border-b border-pink-100" id="contact-left-divider"></div>
-
-                        <!-- 하단 영역: 이메일 / GitHub (남는 세로 공간을 자연스럽게 흡수) -->
-                        <div class="flex-1 flex flex-col justify-between gap-3">
-                            <div class="flex items-center justify-between gap-2 bg-pink-50/70 border border-pink-200 rounded-xl px-4 py-3.5">
-                                <span id="contact-email-text" class="text-base text-gray-800 truncate">hana021013@gmail.com</span>
-                                <button type="button" onclick="copyContactEmail()" id="copy-email-btn" class="flex items-center gap-1 text-xs font-bold text-pink-600 bg-white border border-pink-200 rounded-full px-3 py-1.5 flex-shrink-0 hover:bg-pink-100 transition-colors">
-                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                                    복사
-                                </button>
-                            </div>
-                            <a href="https://github.com/MyLogSpace" target="_blank" rel="noopener" class="flex items-center justify-start gap-2 bg-gray-900 text-white rounded-xl px-4 py-3.5 hover:bg-gray-800 hover:-translate-y-0.5 transition-all text-base font-semibold">
-                                <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
-                                GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 우측: AI Mini Agent 데모 카드 (Mac 창 스타일) -->
                 <div class="bg-purple-50/40 rounded-2xl overflow-hidden border border-purple-200 shadow-2xl flex flex-col h-full">
-                    <!-- 타이틀 바 -->
                     <div class="h-11 bg-purple-100/70 border-b border-purple-200 flex items-center justify-between px-4 gap-3 flex-shrink-0">
                         <div class="flex items-center gap-3 min-w-0">
                             <div class="flex items-center gap-1.5 bg-white px-3 py-1 rounded-lg border border-purple-200 text-xs font-semibold text-gray-600 truncate">
@@ -2396,28 +2359,39 @@ export default AIWorkflow;</div>
                         <span class="text-[10px] font-bold text-purple-600 bg-white border border-purple-200 rounded-full px-2 py-0.5 flex-shrink-0">Interactive Demo</span>
                     </div>
 
-                    <!-- 바디 -->
-                    <div class="p-6 pb-5 flex flex-col flex-1 bg-white">
+                    <div class="p-6 sm:p-8 md:p-10 flex flex-col flex-1 bg-white">
                         <div id="contact-right-topzone" class="flex flex-col gap-3">
                         <div class="flex items-center gap-1.5">
                             <span class="relative flex h-2 w-2">
                                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
                                 <span class="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
                             </span>
-                            <span class="text-xs font-bold text-purple-600 tracking-wide">AI Mini Agent v1.0</span>
+                            <span class="text-sm font-bold text-purple-600 tracking-wide">AI Mini Agent v1.0</span>
                         </div>
-                        <p class="text-sm text-gray-500 leading-relaxed">지원자 '하나'에 대해 AI에게 물어보세요. (프롬프트 시뮬레이션)</p>
+                        <p class="text-base text-gray-500 leading-relaxed">지원자 '하나'에 대해 AI에게 물어보세요. (프롬프트 시뮬레이션)</p>
                         <div class="flex flex-wrap gap-2">
-                            <button type="button" id="mini-agent-btn-1" onclick="askMiniAgent(1)" class="text-xs font-semibold rounded-full px-3.5 py-2 border transition-colors text-gray-600 bg-gray-50 border-gray-200">💡 하나 님의 핵심 강점은?</button>
-                            <button type="button" id="mini-agent-btn-2" onclick="askMiniAgent(2)" class="text-xs font-semibold rounded-full px-3.5 py-2 border transition-colors text-gray-600 bg-gray-50 border-gray-200">🔗 OLA &amp; WAYO 프로젝트 역할?</button>
+                            <button type="button" id="mini-agent-btn-1" onclick="askMiniAgent(1)" data-c="pink" class="ma-btn"><i class="fa-solid fa-user-astronaut"></i> 하나 님의 핵심 강점은?</button>
+                            <button type="button" id="mini-agent-btn-2" onclick="askMiniAgent(2)" data-c="ola" class="ma-btn">🛡️ OLA 프로젝트 역할?</button>
+                            <button type="button" id="mini-agent-btn-3" onclick="askMiniAgent(3)" data-c="wayo" class="ma-btn">🧭 WAYO 프로젝트 역할?</button>
+                            <button type="button" id="mini-agent-btn-4" onclick="askMiniAgent(4)" data-c="purple" class="ma-btn">🧰 핵심 기술 스택은?</button>
                         </div>
                         </div>
 
                         <div class="pt-2 pb-3 mb-4 border-b border-purple-100" id="contact-right-divider"></div>
 
-                        <!-- 답변 박스: 내용 길이에 맞춰 자연스럽게 (flex-col로 리스트 깨짐 방지) -->
-                        <div id="mini-agent-answer-box" class="flex-1 bg-purple-50/50 border border-purple-100 rounded-xl p-5 text-sm text-gray-400 leading-relaxed flex flex-col justify-center">
+                        <div id="mini-agent-answer-box" class="flex-1 min-h-[260px] bg-purple-50/50 border border-purple-100 rounded-xl p-6 md:p-8 text-base text-gray-400 leading-relaxed flex flex-col justify-center">
                             위 프롬프트 버튼을 누르면 AI Agent 답변을 미리 볼 수 있습니다.
+                        </div>
+                        <div class="mt-6 flex flex-col sm:flex-row gap-3">
+                            <button type="button" onclick="copyContactEmail()" id="copy-email-btn" class="flex-1 flex items-center justify-center gap-2.5 bg-slate-50 text-slate-700 border border-slate-200 rounded-xl px-5 py-4 text-sm font-bold hover:bg-slate-100 hover:border-slate-300 hover:-translate-y-0.5 transition-all">
+                                <i class="fa-regular fa-envelope"></i>
+                                <span id="contact-email-text">hana021013@gmail.com</span>
+                                <span class="text-xs font-semibold text-gray-400">복사</span>
+                            </button>
+                            <a href="https://github.com/MyLogSpace" target="_blank" rel="noopener" class="flex-1 flex items-center justify-center gap-2.5 bg-slate-50 text-slate-700 border border-slate-200 rounded-xl px-5 py-4 text-sm font-bold hover:bg-slate-100 hover:border-slate-300 hover:-translate-y-0.5 transition-all">
+                                <i class="fa-brands fa-github text-lg"></i>
+                                GitHub
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -3466,11 +3440,9 @@ export default AIWorkflow;</div>
             const btn = document.getElementById('copy-email-btn');
             if (!btn) return;
             const originalHTML = btn.innerHTML;
-            btn.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>';
-            btn.classList.add('bg-pink-50');
+            btn.innerHTML = '<i class="fa-solid fa-check"></i><span>복사되었습니다</span>';
             setTimeout(() => {
                 btn.innerHTML = originalHTML;
-                btn.classList.remove('bg-pink-50');
             }, 2000);
         }
 
@@ -3502,41 +3474,7 @@ export default AIWorkflow;</div>
             contactResizeTimer = setTimeout(equalizeContactTopZones, 150);
         });
 
-        // AI Mini Agent 데모: 프롬프트 버튼 클릭 시 로딩 → 구조화된 답변 표시
-        const MINI_AGENT_ANSWERS = {
-            1: `<div class="text-sm font-bold text-purple-600 mb-2">[하나 님의 핵심 강점]</div>
-                <ol class="space-y-1.5 text-sm text-gray-700 leading-relaxed list-decimal list-inside">
-                    <li class="whitespace-nowrap">경영지원 실무 문제정의력 + AI 활용역량</li>
-                    <li class="whitespace-nowrap">기획부터 구현까지 혼자 완결하는 실행력</li>
-                </ol>`,
-            2: `<div class="text-sm font-bold text-purple-600 mb-2">[프로젝트 핵심 요약]</div>
-                <ul class="space-y-1.5 text-sm text-gray-700 leading-relaxed">
-                    <li>• <strong class="text-ola-green">OLA</strong>: 3인 팀의 AI Service Planning Lead로 기획·UX·데이터 원칙 주도</li>
-                    <li>• <strong class="text-wayo-yellow">WAYO</strong>: 기획부터 프론트엔드 구현까지 개인 프로젝트로 단독 수행</li>
-                </ul>`
-        };
-
-        function askMiniAgent(id) {
-            const answerBox = document.getElementById('mini-agent-answer-box');
-            for (let i = 1; i <= 2; i++) {
-                const btn = document.getElementById(`mini-agent-btn-${i}`);
-                if (!btn) continue;
-                if (i === id) {
-                    btn.classList.remove('text-gray-600', 'bg-gray-50', 'border-gray-200');
-                    btn.classList.add('text-purple-600', 'bg-purple-50', 'border-purple-300');
-                } else {
-                    btn.classList.remove('text-purple-600', 'bg-purple-50', 'border-purple-300');
-                    btn.classList.add('text-gray-600', 'bg-gray-50', 'border-gray-200');
-                }
-            }
-            if (!answerBox) return;
-            answerBox.innerHTML = '<div class="flex items-center gap-2 text-sm text-gray-400"><span class="inline-block animate-spin">🌀</span> AI가 답변을 생성 중입니다...</div>';
-            setTimeout(() => {
-                answerBox.innerHTML = MINI_AGENT_ANSWERS[id];
-            }, 800);
-        }
-
-    </script>
+        </script>
 
     <!-- 이미지 확대 보기 (라이트박스) -->
     <div id="image-lightbox" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/85 p-4 md:p-10">
