@@ -104,6 +104,12 @@
             -webkit-text-fill-color: transparent;
         }
 
+        .wayo-live-link-desktop { display: none; }
+        .wayo-live-link-mobile { display: inline-flex; }
+        @media (min-width: 768px) {
+            .wayo-live-link-desktop { display: inline-flex; }
+            .wayo-live-link-mobile { display: none; }
+        }
         .award-badge{position:relative;display:inline-flex;align-items:center;gap:.45rem;padding:.45rem 1rem;border-radius:9999px;font-size:.82rem;font-weight:800;letter-spacing:.02em;color:#7a4b00;background:linear-gradient(135deg,#FFF3C4 0%,#FFD34D 45%,#FFB300 100%);border:1px solid #F5B300;box-shadow:0 4px 14px rgba(245,179,0,.38),inset 0 1px 0 rgba(255,255,255,.75);overflow:hidden;white-space:nowrap;line-height:1}
         .award-badge i{color:#B45309}
         .award-badge::after{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.8),transparent);transform:skewX(-20deg);animation:award-shine 3.2s ease-in-out infinite}
@@ -1646,6 +1652,7 @@ export default AIWorkflow;</div>
                         <span class="text-xs font-bold tracking-wide whitespace-nowrap flex-shrink-0 text-slate-500">3 USER CHOICE</span>
                         <span class="text-slate-200 text-xs flex-shrink-0">-</span>
                         <span class="text-xs font-bold tracking-wide whitespace-nowrap flex-shrink-0 text-slate-500">4 AI PLANNER</span>
+                            <a href="https://mylogspace.github.io/WAYO/" target="_blank" rel="noopener noreferrer" class="wayo-live-link wayo-live-link-desktop ml-auto flex-shrink-0 items-center gap-1 whitespace-nowrap text-[11px] font-bold text-wayo-yellow bg-[#FFF8E6] border border-[#FDECB2] rounded-full px-3 py-1.5 hover:bg-[#FFF1CC] transition-colors">🔗 배포 사이트 바로가기 ↗</a>
                     </div>
                 </div>
 
@@ -1896,7 +1903,7 @@ export default AIWorkflow;</div>
                 </div>
 
                 <div class="mt-10 pt-6 border-t border-gray-200 flex items-center justify-between gap-2 flex-wrap">
-                        <button type="button" class="video-lightbox-trigger text-sm font-bold text-gray-400 hover:text-wayo-yellow transition-colors flex-shrink-0" data-src="../assets/WAYO/WAYO.mp4" data-caption="WAYO 실제 작동 화면">🎥 실제 작동 화면</button>
+                        <span class="flex items-center gap-3 flex-wrap"><button type="button" class="video-lightbox-trigger text-sm font-bold text-gray-400 hover:text-wayo-yellow transition-colors flex-shrink-0" data-src="../assets/WAYO/WAYO.mp4" data-caption="WAYO 실제 작동 화면">🎥 실제 작동 화면</button><a href="https://mylogspace.github.io/WAYO/" target="_blank" rel="noopener noreferrer" class="wayo-live-link wayo-live-link-mobile items-center gap-1 whitespace-nowrap text-xs font-bold text-wayo-yellow bg-[#FFF8E6] border border-[#FDECB2] rounded-full px-3 py-1.5 hover:bg-[#FFF1CC] transition-colors">🔗 배포 사이트 바로가기 ↗</a></span>
                         <span class="flex items-center gap-2 flex-wrap">
                             <span class="text-[10px] font-bold text-gray-500 bg-slate-50 border border-slate-200 rounded-full px-2.5 py-1">Problem 선택 비교 부담</span>
                             <span class="text-[10px] font-bold text-pink-600 bg-pink-50 border border-pink-200 rounded-full px-2.5 py-1">Human Decision AI가 먼저 후보 압축하도록 설계</span>
